@@ -14,20 +14,6 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "21493A5C1D427BB700B5CF8A"
-               BuildableName = "carthage update"
-               BlueprintName = "carthage update"
-               ReferencedContainer = "container:RESTAPI.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "215D7C491D4279E8001F4C45"
                BuildableName = "RESTAPI.framework"
                BlueprintName = "RESTAPI"
