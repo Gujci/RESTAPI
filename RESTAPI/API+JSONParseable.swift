@@ -7,6 +7,11 @@
 import Foundation
 import SwiftyJSON
 
+/// Protocol for parseable response objects
+public protocol JSONParseable {
+    init(withJSON data:JSON)
+}
+
 //TODO: - remove duplicates & document it
 extension API {
     

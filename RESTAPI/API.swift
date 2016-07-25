@@ -7,18 +7,19 @@
 import Foundation
 import SwiftyJSON
 
-//TODO: - documentation
-
+/// Protocol for request quer params
 public protocol Queryable {
     func queryString(forKey key: String) -> [NSURLQueryItem]
 }
 
-public protocol JSONParseable {
-    init(withJSON data:JSON)
-}
-
+/// Protocol for objects that can be converted to JSONs for HTTP body parameters
 public protocol ValidJSONObject {
     func JSONFormat() throws -> NSData
+}
+
+/// Converting to JSON error type
+public enum ValidJSONObjectParseError: ErrorType {
+    case JSONSerializeError
 }
 
 //TODO: use this type for body params
@@ -27,18 +28,16 @@ public protocol JSONConvertible {
     var parameterValue: T {get}
 }
 
-public enum ValidJSONObjectParseError: ErrorType {
-    case JSONSerializeError
-}
-
+/// Possibble response errors
 public enum APIError: Int, ErrorType {
     case Unknown
     case NotFound
     case Unouthorized
     case Forbidden
-    case Timeout
+    case ServerError
     case MultipleChoice
     case BadRequest
+    //TODO: - expand
     
     init?(withResponse response: NSURLResponse?) {
         if let statusCode = (response as? NSHTTPURLResponse)?.statusCode {
@@ -56,7 +55,7 @@ public enum APIError: Int, ErrorType {
             case 404:
                 self = .NotFound
             case 500...599:
-                self = .Timeout
+                self = .ServerError
             default:
                 self = .Unknown
             }
@@ -67,12 +66,14 @@ public enum APIError: Int, ErrorType {
     }
 }
 
+/// Possibble authentivation types for the request
 public enum AuthenticationType {
     case None
     case HTTPHeader
     case URLParameter //a.k.a. Query
 }
 
+/// Authentication manager type
 public class RequestAuthenticator {
     public var type: AuthenticationType = .None
     public var accessToken: String?
@@ -92,36 +93,75 @@ public class RequestAuthenticator {
     }
 }
 
-//TODO: - data could be JSONConvertible as well
-
 public class API {
-    public var authentication: RequestAuthenticator
-    public var baseURL: String
     
+    /// Authentication manager
+    public var authentication: RequestAuthenticator
+    /// Base url for the given instance
+    public var baseURL: String
+    /// Has any authentication
     public var hasSession: Bool {
         get {
             return authentication.accessToken != nil
         }
     }
     
+    /// Performs a POST request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
     public func post(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "POST", completion: completion)
     }
     
+    /// Performs a PUT request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
     public func put(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "PUT", completion: completion)
     }
     
+    /// Performs a GET request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
     public func get(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "GET", completion: completion)
     }
     
+    /// Performs a DELETE request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
     public func delete(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "DELETE", completion: completion)
+    }
+    
+    /// Initializes an API instance
+    /// - Params:
+    ///     - baseUrl: Base server url of the instance
+    ///     - authentication: Optional authentication manager for the instance
+    public init(withBaseUrl baseUrl: String, authentication: RequestAuthenticator? = nil) {
+        self.baseURL = baseUrl
+        if let givenAuthentication = authentication {
+            self.authentication = givenAuthentication
+        }
+        else {
+            self.authentication = RequestAuthenticator()
+        }
     }
     
     //MARK: - Private part
@@ -154,15 +194,5 @@ public class API {
             request.addValue(NSBundle.mainBundle().preferredLocalizations.first ?? "en",forHTTPHeaderField: "Accept-Language")
         
         return request
-    }
-    
-    public init(withBaseUrl baseUrl: String, authentication: RequestAuthenticator? = nil) {
-        self.baseURL = baseUrl
-        if let givenAuthentication = authentication {
-            self.authentication = givenAuthentication
-        }
-        else {
-            self.authentication = RequestAuthenticator()
-        }
     }
 }
