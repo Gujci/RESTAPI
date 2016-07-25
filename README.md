@@ -4,6 +4,8 @@ An easy tool to communicate with your server's API in JSON format. Supports quer
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
+The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
+
 # Installation
 ## Carthage
 ```
@@ -80,10 +82,32 @@ testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some 
 ```
 Body parameters should comform to `ValidJSONObject` protocol. `Array` and `Dictionary` types implement this by default.
 
-The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
+### Authenticating requests
+
+To authenticate a request, you have to set the `authentication` property of the API instance. For now this framework supports simple,  access token based authentications in HTTP header and URL query. This is a simple example to show how to set up a HTTP header based authentication.
+
+```swift
+var accessToken: String?
+
+var sessionAuthenticator: RequestAuthenticator {
+    let auth = RequestAuthenticator()
+    auth.tokenKey = "access_token"
+    if let validToken = self.accessToken {
+        auth.type = .HTTPHeader
+        auth.accessToken = validToken
+    }
+    else {
+        auth.type = .None
+    }
+    return auth
+}
+//...
+    testServerApi.authentication = sessionAuthenticator
+//...
+```
 
 # TODO list
-- [ ] Document the authentication
+- [x] Document the authentication
 - [x] Carthage support
 - [ ] Complete the TODOs in the code
 - [ ] Add other possibble authentication types
