@@ -17,6 +17,7 @@ github "SwiftyJSON/SwiftyJSON"
 
 # Example
 By default you can perform a single request which returns a simple JSON response.
+
 ```swift
 let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
 testServerApi.get("/posts") { (error, data) in
@@ -24,7 +25,9 @@ testServerApi.get("/posts") { (error, data) in
 }
 ```
 Or if you want to, you can get a parsed response type with the same request.
-First you ave to implement your response type, which must comform to JSONParseable protocol.
+
+First you have to implement your response type, which must comform to JSONParseable protocol.
+
 ```swift
 struct ExampleResponse: JSONParseable {
     var body: String
@@ -40,15 +43,19 @@ struct ExampleResponse: JSONParseable {
     }
 }
 ```
-After implementing the response object, you set the type of the response data in the completion's parameter list like this.
+
+After implementing the response object, you have toset the type of the desired response data in the completion's parameter list like this.
+
 ```swift
 testServerApi.get("/posts") { (error, data: [ExampleResponse]?) in
-    //...
+    //This a swift array now, filled with ExampleResponse instances
 }
 ```
-In this case an array was expected as response, but simple types will work as well. IT's important that you mark your parameter as Optional, otherwise you will get anb error.
+
+In this case an array was expected as response, but simple types will work as well (like ExampleResponse?). It's important that you mark your parameter as Optional, otherwise you will get a compile time error.
 
 The framework Supports GET, POST, PUT and DELETE requests for now.
+
 More documentation for querys and HTTP body params coming soon...
 
 # TODO list
