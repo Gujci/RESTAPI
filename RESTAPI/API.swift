@@ -79,6 +79,8 @@ public class RequestAuthenticator {
     public var accessToken: String?
     public var tokenKey: String?
     
+    public init() { }
+    
     func authenticateURLRequest(req: NSMutableURLRequest) -> NSMutableURLRequest {
         switch self.type {
         case .HTTPHeader where accessToken != nil && tokenKey != nil:
