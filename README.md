@@ -15,7 +15,10 @@ This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/Swif
 github "SwiftyJSON/SwiftyJSON"
 ```
 
-# Example
+# Examples
+
+### Simple request
+
 By default you can perform a single request which returns a simple JSON response.
 
 ```swift
@@ -26,7 +29,9 @@ testServerApi.get("/posts") { (error, data) in
 ```
 Or if you want to, you can get a parsed response type with the same request.
 
-First you have to implement your response type, which must comform to JSONParseable protocol.
+### Request with expected response type
+
+First you have to implement your response type, which must comform to `JSONParseable` protocol.
 
 ```swift
 struct ExampleResponse: JSONParseable {
@@ -44,7 +49,7 @@ struct ExampleResponse: JSONParseable {
 }
 ```
 
-After implementing the response object, you have toset the type of the desired response data in the completion's parameter list like this.
+After implementing the response object, you have to set the type of the expected response data in the completion's parameter list like this.
 
 ```swift
 testServerApi.get("/posts") { (error, data: [ExampleResponse]?) in
@@ -52,14 +57,33 @@ testServerApi.get("/posts") { (error, data: [ExampleResponse]?) in
 }
 ```
 
-In this case an array was expected as response, but simple types will work as well (like ExampleResponse?). It's important that you mark your parameter as Optional, otherwise you will get a compile time error.
+In this case an array was expected as response, but simple types will work as well (like `ExampleResponse?`). It's important that you mark your parameter as optional, otherwise you will get a compile time error.
 
-The framework Supports GET, POST, PUT and DELETE requests for now.
+### Querying
 
-More documentation for querys and HTTP body params coming soon...
+Querying is simple like this:
+
+```swift
+testServerApi.get("/posts", query: ["userId" : "1"]) { (error, object: [ExampleResponse]?) in
+    //...
+}
+```
+
+Values in the query parameter dictionary must implement the `Queryable` protocol, `String` and `Array` types implement this by default.
+
+### Body parameters
+
+```swift
+testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some title", "userId": 9]) { (error, object) in
+    //...
+}
+```
+Body parameters should comform to `ValidJSONObject` protocol. `Array` and `Dictionary` types implement this by default.
+
+The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 
 # TODO list
-- [ ] Document the API
+- [ ] Document the authentication
 - [x] Carthage support
 - [ ] Complete the TODOs in the code
 - [ ] Add other possibble authentication types
