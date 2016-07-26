@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2119D90F1D46502D00443857 /* SwiftyJSON.framework in Embeded Frameworks */ = {isa = PBXBuildFile; fileRef = 21493A951D429F3700B5CF8A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21493A551D427A3700B5CF8A /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 21493A541D427A3700B5CF8A /* README.md */; };
 		21493A571D427A3B00B5CF8A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 21493A561D427A3B00B5CF8A /* LICENSE */; };
 		21493A631D427E3000B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
@@ -16,10 +15,11 @@
 		21493A661D427E3B00B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
 		21493A671D427E3F00B5CF8A /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
 		21493A681D427E4100B5CF8A /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* API+Utils.swift */; };
-		21493A961D429F3700B5CF8A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21493A951D429F3700B5CF8A /* SwiftyJSON.framework */; };
 		215D7C4E1D4279E8001F4C45 /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
+		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
+		21A9B5C41D475DBD00D2B57A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,33 +32,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		2119D90E1D46502500443857 /* Embeded Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2119D90F1D46502D00443857 /* SwiftyJSON.framework in Embeded Frameworks */,
-			);
-			name = "Embeded Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		21493A541D427A3700B5CF8A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21493A561D427A3B00B5CF8A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		21493A601D427E3000B5CF8A /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		21493A611D427E3000B5CF8A /* API+JSONParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+JSONParseable.swift"; sourceTree = "<group>"; };
 		21493A621D427E3000B5CF8A /* API+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Utils.swift"; sourceTree = "<group>"; };
-		21493A951D429F3700B5CF8A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C4D1D4279E8001F4C45 /* RESTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESTAPI.h; sourceTree = "<group>"; };
 		215D7C4F1D4279E8001F4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		215D7C541D4279E8001F4C45 /* RESTAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RESTAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C591D4279E8001F4C45 /* RESTAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPITests.swift; sourceTree = "<group>"; };
 		215D7C5B1D4279E8001F4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21A9B5C11D475D4800D2B57A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21493A961D429F3700B5CF8A /* SwiftyJSON.framework in Frameworks */,
+				21A9B5C41D475DBD00D2B57A /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,9 +71,10 @@
 		215D7C401D4279E8001F4C45 = {
 			isa = PBXGroup;
 			children = (
-				21493A951D429F3700B5CF8A /* SwiftyJSON.framework */,
+				21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */,
 				21493A561D427A3B00B5CF8A /* LICENSE */,
 				21493A541D427A3700B5CF8A /* README.md */,
+				21A9B5C11D475D4800D2B57A /* Cartfile */,
 				215D7C4C1D4279E8001F4C45 /* RESTAPI */,
 				215D7C581D4279E8001F4C45 /* RESTAPITests */,
 				215D7C4B1D4279E8001F4C45 /* Products */,
@@ -145,7 +133,6 @@
 				215D7C461D4279E8001F4C45 /* Frameworks */,
 				215D7C471D4279E8001F4C45 /* Headers */,
 				215D7C481D4279E8001F4C45 /* Resources */,
-				2119D90E1D46502500443857 /* Embeded Frameworks */,
 			);
 			buildRules = (
 			);
@@ -215,6 +202,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21A9B5C21D475D4800D2B57A /* Cartfile in Resources */,
 				21493A571D427A3B00B5CF8A /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
