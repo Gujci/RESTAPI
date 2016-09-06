@@ -7,9 +7,26 @@
 //
 
 import XCTest
+import SwiftyJSON
 @testable import RESTAPI
 
 class RESTAPITests: XCTestCase {
+    
+    struct ExampleResponse: JSONParseable {
+        var body: String
+        var id: Int
+        var title: String
+        var userId: Int
+        
+        init(withJSON data: JSON) {
+            body = data["body"].stringValue
+            id = data["id"].intValue
+            title = data["title"].stringValue
+            userId = data["userId"].intValue
+        }
+    }
+    
+    let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
     
     override func setUp() {
         super.setUp()
@@ -22,15 +39,18 @@ class RESTAPITests: XCTestCase {
     }
     
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measureBlock {
-            // Put the code you want to measure the time of here.
+        let expectation = expectationWithDescription("some")
+        
+        testServerApi.headers["api_secret"] = "psszt"
+        
+        testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some title", "userId": 9]) { (error, object) in
+            expectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
         }
     }
-    
 }

@@ -42,7 +42,7 @@ public enum APIError: Int, ErrorType {
     init?(withResponse response: NSURLResponse?) {
         if let statusCode = (response as? NSHTTPURLResponse)?.statusCode {
             switch statusCode {
-            case 200:
+            case 200...299:
                 return nil
             case 300:
                 self = .MultipleChoice
@@ -108,13 +108,21 @@ public class API {
         }
     }
     
+    public var headers: [String: String] = {
+       return [
+        "Content-Type":"application/json",
+        "Accept": "application/json",
+        "Accept-Language": NSBundle.mainBundle().preferredLocalizations.first ?? "en"
+        ]
+    }()
+    
     /// Performs a POST request to the given endpont
     /// - Params:
     ///     - endpoint: endpint of the server to perfor the request
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func post(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func post(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "POST", completion: completion)
     }
@@ -125,7 +133,7 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func put(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func put(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "PUT", completion: completion)
     }
@@ -136,7 +144,7 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func get(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func get(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "GET", completion: completion)
     }
@@ -147,7 +155,7 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func delete(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func delete(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
         completion: (error: APIError?, object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "DELETE", completion: completion)
     }
@@ -184,17 +192,18 @@ public class API {
         }.resume()
     }
     
-    internal func clientURLRequest(path: String,query: Dictionary<String, Queryable>?, params: ValidJSONObject?)
+    internal func clientURLRequest(path: String, query: [String: Queryable]?, params: ValidJSONObject?)
         -> NSMutableURLRequest {
             let request = NSMutableURLRequest(URL: NSURL(string: baseURL + path, query: query))
             if let params = params {
                 let jsonData = try? params.JSONFormat()
                 request.HTTPBody = jsonData
             }
-            request.addValue("application/json",forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json",forHTTPHeaderField: "Accept")
-            request.addValue(NSBundle.mainBundle().preferredLocalizations.first ?? "en",forHTTPHeaderField: "Accept-Language")
+            
+            headers.forEach() {
+                request.addValue($0.1, forHTTPHeaderField: $0.0)
+            }
         
-        return request
+            return request
     }
 }

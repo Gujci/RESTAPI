@@ -15,49 +15,49 @@ public protocol JSONParseable {
 //TODO: - remove duplicates & document it
 public extension API {
     
-    public func post<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func post<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
               completion: ((error: APIError?, object: T?) -> ())) {
         parseableRequest("POST", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func put<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func put<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
              completion: (error: APIError?, object: T?) -> ()) {
         parseableRequest("PUT", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func get<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func get<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
              completion: (error: APIError?, object: T?) -> ()) {
         parseableRequest("GET", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func delete<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func delete<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
                 completion: (error: APIError?, object: T?) -> ()) {
         parseableRequest("DELETE", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func post<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func post<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
               completion: ((error: APIError?, object: [T]?) -> ())) {
         parseableRequest("POST", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func put<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func put<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
              completion: (error: APIError?, object: [T]?) -> ()) {
         parseableRequest("PUT", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func get<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func get<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
              completion: (error: APIError?, object: [T]?) -> ()) {
         parseableRequest("GET", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    public func delete<T: JSONParseable>(endpoint: String, query: Dictionary<String, Queryable>? = nil, data: ValidJSONObject? = nil,
+    public func delete<T: JSONParseable>(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
                 completion: (error: APIError?, object: [T]?) -> ()) {
         parseableRequest("DELETE", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
     //MARK: - Private part
     
-    private func parseableRequest<T: JSONParseable>(method: String, endpoint: String, query: Dictionary<String, Queryable>? = nil,
+    private func parseableRequest<T: JSONParseable>(method: String, endpoint: String, query: [String: Queryable]? = nil,
                                    data: ValidJSONObject? = nil,
                                    completion: (error: APIError?, object: T?) -> ()) {
         dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { err ,data in
@@ -70,7 +70,7 @@ public extension API {
         }
     }
     
-    private func parseableRequest<T: JSONParseable>(method: String, endpoint: String, query: Dictionary<String, Queryable>? = nil,
+    private func parseableRequest<T: JSONParseable>(method: String, endpoint: String, query: [String: Queryable]? = nil,
                                   data: ValidJSONObject? = nil,
                                   completion: (error: APIError?, object: [T]?) -> ()) {
         dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { err ,data in

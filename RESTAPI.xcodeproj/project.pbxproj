@@ -12,14 +12,16 @@
 		21493A631D427E3000B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
 		21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
 		21493A651D427E3000B5CF8A /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* API+Utils.swift */; };
-		21493A661D427E3B00B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
-		21493A671D427E3F00B5CF8A /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
-		21493A681D427E4100B5CF8A /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* API+Utils.swift */; };
 		215D7C4E1D4279E8001F4C45 /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
 		21A9B5C41D475DBD00D2B57A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
+		21EEEE391D7EC04200099A9A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
+		21EEEE3A1D7EC0E200099A9A /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
+		21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
+		21EEEE3D1D7EC3A900099A9A /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,20 @@
 			remoteInfo = RESTAPI;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		21EEEE3C1D7EC39C00099A9A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */,
+				21EEEE3D1D7EC3A900099A9A /* SwiftyJSON.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		21493A541D427A3700B5CF8A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -61,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21EEEE391D7EC04200099A9A /* SwiftyJSON.framework in Frameworks */,
 				215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +167,7 @@
 				215D7C501D4279E8001F4C45 /* Sources */,
 				215D7C511D4279E8001F4C45 /* Frameworks */,
 				215D7C521D4279E8001F4C45 /* Resources */,
+				21EEEE3C1D7EC39C00099A9A /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -211,6 +229,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */,
+				21EEEE3A1D7EC0E200099A9A /* SwiftyJSON.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,10 +252,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21493A681D427E4100B5CF8A /* API+Utils.swift in Sources */,
-				21493A661D427E3B00B5CF8A /* API.swift in Sources */,
 				215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */,
-				21493A671D427E3F00B5CF8A /* API+JSONParseable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,6 +374,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -379,6 +397,7 @@
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -388,8 +407,13 @@
 		215D7C621D4279E8001F4C45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
 				INFOPLIST_FILE = RESTAPITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PLATFORM_DIR)/Developer/Library/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -398,8 +422,13 @@
 		215D7C631D4279E8001F4C45 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
 				INFOPLIST_FILE = RESTAPITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PLATFORM_DIR)/Developer/Library/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
