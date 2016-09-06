@@ -12,10 +12,7 @@ The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 github "Gujci/RESTAPI"
 ```
 
-This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so you might want to install it as well.
-```
-github "SwiftyJSON/SwiftyJSON"
-```
+This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so it imports it.
 
 # Examples
 
