@@ -12,22 +12,6 @@ public protocol Queryable {
     func queryString(forKey key: String) -> [NSURLQueryItem]
 }
 
-/// Protocol for objects that can be converted to JSONs for HTTP body parameters
-public protocol ValidJSONObject {
-    func JSONFormat() throws -> NSData
-}
-
-/// Converting to JSON error type
-public enum ValidJSONObjectParseError: ErrorType {
-    case JSONSerializeError
-}
-
-//TODO: use this type for body params
-public protocol JSONConvertible {
-    associatedtype T: ValidJSONObject
-    var parameterValue: T {get}
-}
-
 /// Possibble response errors
 public enum APIError: Int, ErrorType {
     case Unknown

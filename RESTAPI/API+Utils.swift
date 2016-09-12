@@ -55,28 +55,6 @@ extension NSDate {
     }
 }
 
-extension Dictionary: ValidJSONObject {
-    public func JSONFormat() throws -> NSData {
-        if let serializableData = self as? AnyObject {
-            return try NSJSONSerialization.dataWithJSONObject(serializableData, options: .PrettyPrinted)
-        }
-        else {
-            throw ValidJSONObjectParseError.JSONSerializeError
-        }
-    }
-}
-
-extension Array: ValidJSONObject {
-    public func JSONFormat() throws -> NSData {
-        if let serializableData = self as? AnyObject {
-            return try NSJSONSerialization.dataWithJSONObject(serializableData, options: .PrettyPrinted)
-        }
-        else {
-            throw ValidJSONObjectParseError.JSONSerializeError
-        }
-    }
-}
-
 func + <K, V>(left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
     var map = Dictionary<K, V>()
     

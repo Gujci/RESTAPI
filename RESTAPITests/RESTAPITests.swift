@@ -10,21 +10,39 @@ import XCTest
 import SwiftyJSON
 @testable import RESTAPI
 
-class RESTAPITests: XCTestCase {
+struct ExamplePostModel {
+    var body: String
+    var id: Int
+    var title: String
+    var userId: Int
     
-    struct ExampleResponse: JSONParseable {
-        var body: String
-        var id: Int
-        var title: String
-        var userId: Int
-        
-        init(withJSON data: JSON) {
-            body = data["body"].stringValue
-            id = data["id"].intValue
-            title = data["title"].stringValue
-            userId = data["userId"].intValue
-        }
+    init(withBody body: String, id: Int, title: String, userId: Int) {
+        self.body = body
+        self.id = id
+        self.title = title
+        self.userId = userId
     }
+}
+
+extension ExamplePostModel: JSONParseable {
+    
+    init(withJSON data: JSON) {
+        body = data["body"].stringValue
+        id = data["id"].intValue
+        title = data["title"].stringValue
+        userId = data["userId"].intValue
+    }
+}
+
+extension ExamplePostModel: JSONConvertible {
+
+    var parameterValue: [String: AnyObject] {
+        return ["body": body, "id": NSNumber(integer: id), "title": title, "userId": NSNumber(integer: userId)]
+    }
+}
+
+class RESTAPITests: XCTestCase {
+
     
     let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
     
@@ -43,7 +61,9 @@ class RESTAPITests: XCTestCase {
         
         testServerApi.headers["api_secret"] = "psszt"
         
-        testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some title", "userId": 9]) { (error, object) in
+        testServerApi.post("/posts",
+                           data: ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9))
+        { (error, object: ExamplePostModel?) in
             expectation.fulfill()
         }
         

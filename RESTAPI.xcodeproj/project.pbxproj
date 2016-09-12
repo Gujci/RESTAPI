@@ -15,6 +15,7 @@
 		215D7C4E1D4279E8001F4C45 /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
+		2176DDF41D86E3D8005A1B30 /* API+JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */; };
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
 		21A9B5C41D475DBD00D2B57A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
 		21EEEE391D7EC04200099A9A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
@@ -60,6 +61,7 @@
 		215D7C541D4279E8001F4C45 /* RESTAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RESTAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C591D4279E8001F4C45 /* RESTAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPITests.swift; sourceTree = "<group>"; };
 		215D7C5B1D4279E8001F4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+JSONConvertible.swift"; sourceTree = "<group>"; };
 		21A9B5C11D475D4800D2B57A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +116,7 @@
 				215D7C4F1D4279E8001F4C45 /* Info.plist */,
 				21493A601D427E3000B5CF8A /* API.swift */,
 				21493A611D427E3000B5CF8A /* API+JSONParseable.swift */,
+				2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */,
 				21493A621D427E3000B5CF8A /* API+Utils.swift */,
 			);
 			path = RESTAPI;
@@ -243,6 +246,7 @@
 			files = (
 				21493A651D427E3000B5CF8A /* API+Utils.swift in Sources */,
 				21493A631D427E3000B5CF8A /* API.swift in Sources */,
+				2176DDF41D86E3D8005A1B30 /* API+JSONConvertible.swift in Sources */,
 				21493A551D427A3700B5CF8A /* README.md in Sources */,
 				21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */,
 			);
