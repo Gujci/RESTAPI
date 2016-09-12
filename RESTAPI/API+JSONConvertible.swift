@@ -19,12 +19,13 @@ public protocol ValidJSONObject {
     func JSONFormat() throws -> NSData
 }
 
+/// Protocol for custom types
 public protocol JSONConvertible: ValidJSONObject {
     associatedtype T: ValidJSONObject
     var parameterValue: T {get}
 }
 
-extension JSONConvertible  {
+public extension JSONConvertible  {
     func JSONFormat() throws -> NSData {
         return try parameterValue.JSONFormat()
     }
