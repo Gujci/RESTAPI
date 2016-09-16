@@ -5,52 +5,51 @@
 //
 
 import Foundation
-import SwiftyJSON
 
 extension Array: Queryable {
-    public func queryString(forKey key: String) -> [NSURLQueryItem] {
+    public func queryString(forKey key: String) -> [URLQueryItem] {
         return self.map() { item in
-            return NSURLQueryItem(name: "\(key)[]", value: "\(item)")
+            return URLQueryItem(name: "\(key)[]", value: "\(item)")
         }
     }
 }
 
 extension String: Queryable {
-    public func queryString(forKey key: String) -> [NSURLQueryItem] {
-        return [NSURLQueryItem(name: key, value: self)]
+    public func queryString(forKey key: String) -> [URLQueryItem] {
+        return [URLQueryItem(name: key, value: self)]
     }
 }
 
-extension NSURL {
-    convenience init(string: String, query: Dictionary<String, Queryable>?) {
+extension URL {
+    init(string: String, query: Dictionary<String, Queryable>?) {
         if query == nil {
             self.init(string: string)!
             return
         }
-        let components = NSURLComponents(string: string)
-        var querryItems = components?.queryItems ?? Array<NSURLQueryItem>()
+        var components = URLComponents(string: string)
+        var querryItems = components?.queryItems ?? Array<URLQueryItem>()
         query?.forEach() {
-            querryItems.appendContentsOf($0.1.queryString(forKey: $0.0))
+            querryItems.append(contentsOf: $0.value.queryString(forKey: $0.0))
         }
         components?.queryItems = querryItems
-        self.init(string: "",relativeToURL: components!.URL)!
+        self.init(string: components!.url!.absoluteString)!
     }
     
-    convenience init(url: NSURL, query: Dictionary<String, Queryable>?) {
-        let components = NSURLComponents(URL: url, resolvingAgainstBaseURL: false)
-        var querryItems = components?.queryItems ?? Array<NSURLQueryItem>()
+    init(url: URL, query: Dictionary<String, Queryable>?) {
+        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)
+        var querryItems = components?.queryItems ?? Array<URLQueryItem>()
         query?.forEach() {
-            querryItems.appendContentsOf($0.1.queryString(forKey: $0.0))
+            querryItems.append(contentsOf: $0.1.queryString(forKey: $0.0))
         }
         components?.queryItems = querryItems
-        self.init(string: "",relativeToURL: components!.URL)!
+        self.init(string: "",relativeTo: components!.url)!
     }
 }
 
-extension NSDate {
+extension Date {
     static var timestamp: Double {
         get {
-            return NSDate().timeIntervalSince1970 * 1000
+            return Date().timeIntervalSince1970 * 1000
         }
     }
 }
@@ -69,7 +68,7 @@ func + <K, V>(left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, 
     return map
 }
 
-func += <K, V> (inout left: Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
+func += <K, V> (left: inout Dictionary<K, V>, right: Dictionary<K, V>) -> Dictionary<K, V> {
     for (k, v) in right {
         left[k] = v
     }

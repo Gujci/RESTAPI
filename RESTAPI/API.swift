@@ -9,39 +9,39 @@ import SwiftyJSON
 
 /// Protocol for request quer params
 public protocol Queryable {
-    func queryString(forKey key: String) -> [NSURLQueryItem]
+    func queryString(forKey key: String) -> [URLQueryItem]
 }
 
 /// Possibble response errors
-public enum APIError: Int, ErrorType {
-    case Unknown
-    case NotFound
-    case Unouthorized
-    case Forbidden
-    case ServerError
-    case MultipleChoice
-    case BadRequest
+public enum APIError: Int, Error {
+    case unknown
+    case notFound
+    case unouthorized
+    case forbidden
+    case serverError
+    case multipleChoice
+    case badRequest
     //TODO: - expand
     
-    init?(withResponse response: NSURLResponse?) {
-        if let statusCode = (response as? NSHTTPURLResponse)?.statusCode {
+    init?(withResponse response: URLResponse?) {
+        if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
             case 200...299:
                 return nil
             case 300:
-                self = .MultipleChoice
+                self = .multipleChoice
             case 400:
-                self = .BadRequest
+                self = .badRequest
             case 401:
-                self = .Unouthorized
+                self = .unouthorized
             case 403:
-                self = .Forbidden
+                self = .forbidden
             case 404:
-                self = .NotFound
+                self = .notFound
             case 500...599:
-                self = .ServerError
+                self = .serverError
             default:
-                self = .Unknown
+                self = .unknown
             }
         }
         else {
@@ -52,26 +52,26 @@ public enum APIError: Int, ErrorType {
 
 /// Possibble authentivation types for the request
 public enum AuthenticationType {
-    case None
-    case HTTPHeader
-    case URLParameter //a.k.a. Query
+    case none
+    case httpHeader
+    case urlParameter //a.k.a. Query
 }
 
 /// Authentication manager type
-public class RequestAuthenticator {
-    public var type: AuthenticationType = .None
-    public var accessToken: String?
-    public var tokenKey: String?
+open class RequestAuthenticator {
+    open var type: AuthenticationType = .none
+    open var accessToken: String?
+    open var tokenKey: String?
     
     public init() { }
     
-    func authenticateURLRequest(req: NSMutableURLRequest) -> NSMutableURLRequest {
+    func authenticateURLRequest(_ req: NSMutableURLRequest) -> NSMutableURLRequest {
         switch self.type {
-        case .HTTPHeader where accessToken != nil && tokenKey != nil:
+        case .httpHeader where accessToken != nil && tokenKey != nil:
             req.addValue(accessToken!,forHTTPHeaderField: tokenKey!)
             return req
-        case .URLParameter where accessToken != nil && tokenKey != nil:
-            req.URL = NSURL(url: req.URL!,query: [tokenKey!: accessToken!])
+        case .urlParameter where accessToken != nil && tokenKey != nil:
+            req.url = URL(url: req.url!,query: [tokenKey!: accessToken!])
             return req
         default:
             return req
@@ -79,24 +79,24 @@ public class RequestAuthenticator {
     }
 }
 
-public class API {
+open class API {
     
     /// Authentication manager
-    public var authentication: RequestAuthenticator
+    open var authentication: RequestAuthenticator
     /// Base url for the given instance
-    public var baseURL: String
+    open var baseURL: String
     /// Has any authentication
-    public var hasSession: Bool {
+    open var hasSession: Bool {
         get {
             return authentication.accessToken != nil
         }
     }
     
-    public var headers: [String: String] = {
+    open var headers: [String: String] = {
        return [
         "Content-Type":"application/json",
         "Accept": "application/json",
-        "Accept-Language": NSBundle.mainBundle().preferredLocalizations.first ?? "en"
+        "Accept-Language": Bundle.main.preferredLocalizations.first ?? "en"
         ]
     }()
     
@@ -106,8 +106,8 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func post(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: (error: APIError?, object: JSON?) -> ()) {
+    open func post(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "POST", completion: completion)
     }
     
@@ -117,8 +117,8 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func put(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: (error: APIError?, object: JSON?) -> ()) {
+    open func put(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "PUT", completion: completion)
     }
     
@@ -128,8 +128,8 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func get(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: (error: APIError?, object: JSON?) -> ()) {
+    open func get(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "GET", completion: completion)
     }
     
@@ -139,8 +139,8 @@ public class API {
     ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
-    public func delete(endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: (error: APIError?, object: JSON?) -> ()) {
+    open func delete(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "DELETE", completion: completion)
     }
     
@@ -160,28 +160,29 @@ public class API {
     
     //MARK: - Private part
     
-    internal func dataTask(request: NSMutableURLRequest, method: String, completion: (error: APIError?, object: JSON?) -> ()) {
-        request.HTTPMethod = method
+    internal func dataTask(_ request: NSMutableURLRequest, method: String, completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+        request.httpMethod = method
         
-        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let session = URLSession(configuration: URLSessionConfiguration.default)
         
-        session.dataTaskWithRequest(authentication.authenticateURLRequest(request)) { (data, response, error) -> Void in
+        session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
+                         completionHandler: { (data, response, error) -> Void in
             if let validData = data {
-                completion(error: APIError(withResponse: response), object: JSON(data: validData))
+                completion(APIError(withResponse: response), JSON(data: validData))
             }
             else {
-                completion(error: APIError(withResponse: response), object: nil)
+                completion(APIError(withResponse: response), nil)
             }
             
-        }.resume()
+        }) .resume()
     }
     
-    internal func clientURLRequest(path: String, query: [String: Queryable]?, params: ValidJSONObject?)
+    internal func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidJSONObject?)
         -> NSMutableURLRequest {
-            let request = NSMutableURLRequest(URL: NSURL(string: baseURL + path, query: query))
+            let request = NSMutableURLRequest(url: URL(string: baseURL + path, query: query))
             if let params = params {
                 let jsonData = try? params.JSONFormat()
-                request.HTTPBody = jsonData
+                request.httpBody = jsonData
             }
             
             headers.forEach() {

@@ -37,7 +37,7 @@ extension ExamplePostModel: JSONParseable {
 extension ExamplePostModel: JSONConvertible {
 
     var parameterValue: [String: AnyObject] {
-        return ["body": body, "id": NSNumber(integer: id), "title": title, "userId": NSNumber(integer: userId)]
+        return ["body": body as AnyObject, "id": NSNumber(value: id as Int), "title": title as AnyObject, "userId": NSNumber(value: userId as Int)]
     }
 }
 
@@ -48,16 +48,30 @@ class RESTAPITests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        let expectation = expectationWithDescription("some")
+    func testQuery() {
+        let expectation = self.expectation(description: "some")
+        
+        testServerApi.get("/posts",
+                          query: ["userId": "1"])
+        { (error, object: [ExamplePostModel]?) in
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testPost() {
+        let expectation = self.expectation(description: "some")
         
         testServerApi.headers["api_secret"] = "psszt"
         
@@ -67,7 +81,7 @@ class RESTAPITests: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
