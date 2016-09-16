@@ -14,6 +14,15 @@ github "Gujci/RESTAPI"
 
 This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so it imports it.
 
+### Swift 3
+
+for Swift 3 support check out the `swift3` branch.
+
+```
+github "Gujci/RESTAPI" "swift3"
+```
+
+
 # Examples
 
 ### Simple request
