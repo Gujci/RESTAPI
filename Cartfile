@@ -1,4 +1,1 @@
-#waitin for the swift 3 release here
-#github "SwiftyJSON/SwiftyJSON"
-
-git "https://github.com/appsailor/SwiftyJSON.git" "swift3"
+github "SwiftyJSON/SwiftyJSON"

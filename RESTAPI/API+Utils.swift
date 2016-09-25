@@ -42,7 +42,7 @@ extension URL {
             querryItems.append(contentsOf: $0.1.queryString(forKey: $0.0))
         }
         components?.queryItems = querryItems
-        self.init(string: "",relativeTo: components!.url)!
+        self.init(string: components!.url!.absoluteString)!
     }
 }
 

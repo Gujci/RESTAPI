@@ -74,6 +74,9 @@ class RESTAPITests: XCTestCase {
         let expectation = self.expectation(description: "some")
         
         testServerApi.headers["api_secret"] = "psszt"
+        testServerApi.authentication.tokenKey = "access_token"
+        testServerApi.authentication.type = .urlParameter
+        testServerApi.authentication.accessToken = "test"
         
         testServerApi.post("/posts",
                            data: ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9))
