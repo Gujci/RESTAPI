@@ -14,12 +14,12 @@ github "Gujci/RESTAPI"
 
 This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so it imports it.
 
-### Swift 3
+### Swift 2.2
 
-for Swift 3 support check out the `swift3` branch.
+for Swift 2.2 use the `0.2.2` tag. This version will not be supported.
 
 ```
-github "Gujci/RESTAPI" "swift3"
+github "Gujci/RESTAPI" "== 0.2.2"
 ```
 
 
@@ -118,3 +118,4 @@ var sessionAuthenticator: RequestAuthenticator {
 - [ ] expand error types
 - [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
 - [ ] Add more unit tests
+- [ ] Travis
