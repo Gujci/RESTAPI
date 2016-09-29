@@ -6,7 +6,6 @@
 //  Copyright © 2016 gujci. All rights reserved.
 //
 
-import Foundation
 import SwiftyJSON
 
 /// Converting to JSON error type

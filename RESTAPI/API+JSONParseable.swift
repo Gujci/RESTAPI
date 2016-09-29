@@ -4,7 +4,6 @@
 //  Created by Gujgiczer Máté on 23/03/16.
 //
 
-import Foundation
 import SwiftyJSON
 
 /// Protocol for parseable response objects
@@ -12,7 +11,7 @@ public protocol JSONParseable {
     init(withJSON data:JSON)
 }
 
-//TODO: - remove duplicates & document it
+//TODO: - make JSON and [JSON] comform to JSONParseable to reduce redundant code
 public extension API {
     
     public func post<T: JSONParseable>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,

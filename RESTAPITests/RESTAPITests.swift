@@ -10,6 +10,7 @@ import XCTest
 import SwiftyJSON
 @testable import RESTAPI
 
+//MARK: - ExamplePostModel
 struct ExamplePostModel {
     var body: String
     var id: Int
@@ -36,30 +37,24 @@ extension ExamplePostModel: JSONParseable {
 
 extension ExamplePostModel: JSONConvertible {
 
-    var parameterValue: [String: AnyObject] {
-        return ["body": body as AnyObject, "id": NSNumber(value: id as Int), "title": title as AnyObject, "userId": NSNumber(value: userId as Int)]
+    var parameterValue: [String: Any] {
+        return ["body": body, "id": id, "title": title, "userId": userId]
     }
 }
 
+//MARK: - Test class
 class RESTAPITests: XCTestCase {
 
-    
     let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
-    
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
     
     func testQuery() {
         let expectation = self.expectation(description: "some")
         
-        testServerApi.get("/posts",
-                          query: ["userId": "1"])
-        { (error, object: [ExamplePostModel]?) in
+        testServerApi.get("/posts", query: ["userId": "1"])
+        { (error, posts: [ExamplePostModel]?) in
+            posts?.forEach() { post in
+                XCTAssert(post.userId == 1)
+            }
             expectation.fulfill()
         }
         
@@ -72,15 +67,10 @@ class RESTAPITests: XCTestCase {
     
     func testPost() {
         let expectation = self.expectation(description: "some")
+        let example = ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9)
         
-        testServerApi.headers["api_secret"] = "psszt"
-        testServerApi.authentication.tokenKey = "access_token"
-        testServerApi.authentication.type = .urlParameter
-        testServerApi.authentication.accessToken = "test"
-        
-        testServerApi.post("/posts",
-                           data: ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9))
-        { (error, object: ExamplePostModel?) in
+        testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
+            XCTAssertEqual(responsePost?.id, example.id)
             expectation.fulfill()
         }
         

@@ -4,7 +4,6 @@
 //  Created by Gujgiczer Máté on 19/03/16.
 //
 
-import Foundation
 import SwiftyJSON
 
 /// Protocol for request quer params
@@ -13,7 +12,7 @@ public protocol Queryable {
 }
 
 /// Possibble response errors
-public enum APIError: Int, Error {
+public enum APIError: Error {
     case unknown
     case notFound
     case unouthorized
@@ -21,6 +20,8 @@ public enum APIError: Int, Error {
     case serverError
     case multipleChoice
     case badRequest
+    case notImplemented
+    case gatewayTimeout
     //TODO: - expand
     
     init?(withResponse response: URLResponse?) {
@@ -30,16 +31,28 @@ public enum APIError: Int, Error {
                 return nil
             case 300:
                 self = .multipleChoice
+                break
             case 400:
                 self = .badRequest
+                break
             case 401:
                 self = .unouthorized
+                break
             case 403:
                 self = .forbidden
+                break
             case 404:
                 self = .notFound
+                break
+            case 501:
+                self = .notImplemented
+                break
+            case 504:
+                self = .gatewayTimeout
+                break
             case 500...599:
                 self = .serverError
+                break
             default:
                 self = .unknown
             }
@@ -65,7 +78,8 @@ open class RequestAuthenticator {
     
     public init() { }
     
-    func authenticateURLRequest(_ req: NSMutableURLRequest) -> NSMutableURLRequest {
+    func authenticateURLRequest(_ req: URLRequest) -> URLRequest {
+        var req = req
         switch self.type {
         case .httpHeader where accessToken != nil && tokenKey != nil:
             req.addValue(accessToken!,forHTTPHeaderField: tokenKey!)
@@ -160,11 +174,12 @@ open class API {
     
     //MARK: - Private part
     
-    internal func dataTask(_ request: NSMutableURLRequest, method: String, completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+    internal func dataTask(_ request: URLRequest, method: String, completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+        
+        var request = request
         request.httpMethod = method
         
         let session = URLSession(configuration: URLSessionConfiguration.default)
-        
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
             if let validData = data {
@@ -178,8 +193,8 @@ open class API {
     }
     
     internal func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidJSONObject?)
-        -> NSMutableURLRequest {
-            let request = NSMutableURLRequest(url: URL(string: baseURL + path, query: query))
+        -> URLRequest {
+            var request = URLRequest(url: URL(string: baseURL + path, query: query))
             if let params = params {
                 let jsonData = try? params.JSONFormat()
                 request.httpBody = jsonData

@@ -4,8 +4,6 @@
 //  Created by Gujgiczer Máté on 23/03/16.
 //
 
-import Foundation
-
 extension Array: Queryable {
     public func queryString(forKey key: String) -> [URLQueryItem] {
         return self.map() { item in
