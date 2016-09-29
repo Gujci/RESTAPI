@@ -115,6 +115,6 @@ var sessionAuthenticator: RequestAuthenticator {
 # TODO list
 - [x] Document the authentication
 - [x] Carthage support
-- [ ] Complete the TODOs in the code
-- [ ] Add other possibble authentication types
-- [ ] Add unit tests
+- [ ] expand error types
+- [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
+- [ ] Add more unit tests

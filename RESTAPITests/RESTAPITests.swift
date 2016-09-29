@@ -10,6 +10,7 @@ import XCTest
 import SwiftyJSON
 @testable import RESTAPI
 
+//MARK: - ExamplePostModel
 struct ExamplePostModel {
     var body: String
     var id: Int
@@ -36,38 +37,44 @@ extension ExamplePostModel: JSONParseable {
 
 extension ExamplePostModel: JSONConvertible {
 
-    var parameterValue: [String: AnyObject] {
-        return ["body": body, "id": NSNumber(integer: id), "title": title, "userId": NSNumber(integer: userId)]
+    var parameterValue: [String: Any] {
+        return ["body": body, "id": id, "title": title, "userId": userId]
     }
 }
 
+//MARK: - Test class
 class RESTAPITests: XCTestCase {
 
-    
     let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        let expectation = expectationWithDescription("some")
+    func testQuery() {
+        let expectation = self.expectation(description: "some")
         
-        testServerApi.headers["api_secret"] = "psszt"
-        
-        testServerApi.post("/posts",
-                           data: ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9))
-        { (error, object: ExamplePostModel?) in
+        testServerApi.get("/posts", query: ["userId": "1"])
+        { (error, posts: [ExamplePostModel]?) in
+            posts?.forEach() { post in
+                XCTAssert(post.userId == 1)
+            }
             expectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { error in
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testPost() {
+        let expectation = self.expectation(description: "some")
+        let example = ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9)
+        
+        testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
+            XCTAssertEqual(responsePost?.id, example.id)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }
