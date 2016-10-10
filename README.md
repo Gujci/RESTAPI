@@ -118,4 +118,4 @@ var sessionAuthenticator: RequestAuthenticator {
 - [ ] expand error types
 - [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
 - [ ] Add more unit tests
-- [ ] Travis
+- [x] Travis
