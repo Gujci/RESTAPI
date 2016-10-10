@@ -24,3 +24,4 @@ deploy:
   skip_cleanup: true
   on:
     repo: Gujci/RESTAPI
+    tags: true
