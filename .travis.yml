@@ -14,8 +14,10 @@ before_script:
 before_deploy:
 - carthage build --no-skip-current
 - carthage archive $FRAMEWORK_NAME
-script: xcodebuild -scheme 'RESTAPI iOS' -destination 'platform=iOS Simulator,name=iPhone
-  6,OS=10.0' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+script:
+- set -o pipefail
+- travis_retry xcodebuild -scheme 'RESTAPI iOS' -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+- travis_retry xcodebuild -scheme 'RESTAPI tvOS' -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 deploy:
   provider: releases
   api_key:
@@ -25,3 +27,8 @@ deploy:
   on:
     repo: Gujci/RESTAPI
     tags: true
+notifications:
+  slack:
+    rooms:
+      - gujci:xWMjD0glKEDR1fB3D9sfiG57#restapi
+  email: false
