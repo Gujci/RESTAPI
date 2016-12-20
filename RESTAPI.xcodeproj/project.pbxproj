@@ -15,12 +15,23 @@
 		215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
 		2176DDF41D86E3D8005A1B30 /* API+JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */; };
+		219AEB9E1E0933F2009C939B /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
+		219AEBAC1E093404009C939B /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
+		219AEBB11E0934A5009C939B /* Info-tvOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBB01E0934A5009C939B /* Info-tvOS.plist */; };
+		219AEBB21E093573009C939B /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		219AEBB51E093668009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBB41E093668009C939B /* SwiftyJSON.framework */; };
+		219AEBBC1E09367A009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBBB1E09367A009C939B /* SwiftyJSON.framework */; };
+		219AEBBD1E09373B009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBBB1E09367A009C939B /* SwiftyJSON.framework */; };
+		219AEBBF1E093751009C939B /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBBE1E093751009C939B /* SwiftyJSON.framework */; };
+		219AEBC01E093760009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBB91E093669009C939B /* SwiftyJSON.framework */; };
+		219AEBC21E093773009C939B /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBC11E093773009C939B /* SwiftyJSON.framework */; };
+		219AEBC31E09377B009C939B /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
+		219AEBC41E093ABE009C939B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
+		219AEBC51E093AC1009C939B /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
+		219AEBC61E093AC3009C939B /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* API+Utils.swift */; };
+		219AEBC71E093AC7009C939B /* API+JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */; };
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
-		21A9B5C41D475DBD00D2B57A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
-		21EEEE391D7EC04200099A9A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
-		21EEEE3A1D7EC0E200099A9A /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; };
 		21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
-		21EEEE3D1D7EC3A900099A9A /* SwiftyJSON.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
@@ -32,6 +43,13 @@
 			remoteGlobalIDString = 215D7C491D4279E8001F4C45;
 			remoteInfo = RESTAPI;
 		};
+		219AEB9F1E0933F2009C939B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 215D7C411D4279E8001F4C45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 219AEB941E0933F2009C939B;
+			remoteInfo = "RESTAPI tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +60,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */,
-				21EEEE3D1D7EC3A900099A9A /* SwiftyJSON.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,13 +73,23 @@
 		21493A621D427E3000B5CF8A /* API+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Utils.swift"; sourceTree = "<group>"; };
 		215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C4D1D4279E8001F4C45 /* RESTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESTAPI.h; sourceTree = "<group>"; };
-		215D7C4F1D4279E8001F4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		215D7C541D4279E8001F4C45 /* RESTAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RESTAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		215D7C4F1D4279E8001F4C45 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "RESTAPI/Info-iOS.plist"; sourceTree = "<group>"; };
+		215D7C541D4279E8001F4C45 /* RESTAPITests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RESTAPITests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C591D4279E8001F4C45 /* RESTAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPITests.swift; sourceTree = "<group>"; };
 		215D7C5B1D4279E8001F4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+JSONConvertible.swift"; sourceTree = "<group>"; };
+		219AEB951E0933F2009C939B /* RESTAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		219AEB9D1E0933F2009C939B /* RESTAPI tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RESTAPI tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		219AEBB01E0934A5009C939B /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "RESTAPI tvOS/Info-tvOS.plist"; sourceTree = "<group>"; };
+		219AEBB41E093668009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		219AEBB71E093669009C939B /* 10BC2E58-1426-3CA7-A224-777E32BEE344.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "10BC2E58-1426-3CA7-A224-777E32BEE344.bcsymbolmap"; sourceTree = "<group>"; };
+		219AEBB81E093669009C939B /* 21A8E6C7-53A9-3B92-8A5E-DDDDF882DC69.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "21A8E6C7-53A9-3B92-8A5E-DDDDF882DC69.bcsymbolmap"; sourceTree = "<group>"; };
+		219AEBB91E093669009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
+		219AEBBA1E093669009C939B /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
+		219AEBBB1E09367A009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		219AEBBE1E093751009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		219AEBC11E093773009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		21A9B5C11D475D4800D2B57A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21A9B5C41D475DBD00D2B57A /* SwiftyJSON.framework in Frameworks */,
+				219AEBBC1E09367A009C939B /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,8 +105,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21EEEE391D7EC04200099A9A /* SwiftyJSON.framework in Frameworks */,
+				219AEBBD1E09373B009C939B /* SwiftyJSON.framework in Frameworks */,
 				215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		219AEB911E0933F2009C939B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219AEBB51E093668009C939B /* SwiftyJSON.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		219AEB9A1E0933F2009C939B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219AEBC01E093760009C939B /* SwiftyJSON.framework in Frameworks */,
+				219AEB9E1E0933F2009C939B /* RESTAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,13 +133,16 @@
 		215D7C401D4279E8001F4C45 = {
 			isa = PBXGroup;
 			children = (
-				21A9B5C31D475DBD00D2B57A /* SwiftyJSON.framework */,
+				219AEBC11E093773009C939B /* SwiftyJSON.framework */,
+				219AEBBE1E093751009C939B /* SwiftyJSON.framework */,
 				21493A561D427A3B00B5CF8A /* LICENSE */,
 				21493A541D427A3700B5CF8A /* README.md */,
 				21A9B5C11D475D4800D2B57A /* Cartfile */,
+				219AEBAD1E093455009C939B /* Supporting Files */,
 				215D7C4C1D4279E8001F4C45 /* RESTAPI */,
 				215D7C581D4279E8001F4C45 /* RESTAPITests */,
 				215D7C4B1D4279E8001F4C45 /* Products */,
+				219AEBB31E093668009C939B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,7 +150,9 @@
 			isa = PBXGroup;
 			children = (
 				215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */,
-				215D7C541D4279E8001F4C45 /* RESTAPITests.xctest */,
+				215D7C541D4279E8001F4C45 /* RESTAPITests iOS.xctest */,
+				219AEB951E0933F2009C939B /* RESTAPI.framework */,
+				219AEB9D1E0933F2009C939B /* RESTAPI tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -112,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				215D7C4D1D4279E8001F4C45 /* RESTAPI.h */,
-				215D7C4F1D4279E8001F4C45 /* Info.plist */,
 				21493A601D427E3000B5CF8A /* API.swift */,
 				21493A611D427E3000B5CF8A /* API+JSONParseable.swift */,
 				2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */,
@@ -130,6 +178,37 @@
 			path = RESTAPITests;
 			sourceTree = "<group>";
 		};
+		219AEBAD1E093455009C939B /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				219AEBB01E0934A5009C939B /* Info-tvOS.plist */,
+				215D7C4F1D4279E8001F4C45 /* Info-iOS.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		219AEBB31E093668009C939B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				219AEBBB1E09367A009C939B /* SwiftyJSON.framework */,
+				219AEBB61E093669009C939B /* tvOS */,
+				219AEBB41E093668009C939B /* SwiftyJSON.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		219AEBB61E093669009C939B /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				219AEBB71E093669009C939B /* 10BC2E58-1426-3CA7-A224-777E32BEE344.bcsymbolmap */,
+				219AEBB81E093669009C939B /* 21A8E6C7-53A9-3B92-8A5E-DDDDF882DC69.bcsymbolmap */,
+				219AEBB91E093669009C939B /* SwiftyJSON.framework */,
+				219AEBBA1E093669009C939B /* SwiftyJSON.framework.dSYM */,
+			);
+			name = tvOS;
+			path = Carthage/Build/tvOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -141,12 +220,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		219AEB921E0933F2009C939B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219AEBB21E093573009C939B /* RESTAPI.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		215D7C491D4279E8001F4C45 /* RESTAPI */ = {
+		215D7C491D4279E8001F4C45 /* RESTAPI iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 215D7C5E1D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPI" */;
+			buildConfigurationList = 215D7C5E1D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPI iOS" */;
 			buildPhases = (
 				215D7C451D4279E8001F4C45 /* Sources */,
 				215D7C461D4279E8001F4C45 /* Frameworks */,
@@ -157,14 +244,14 @@
 			);
 			dependencies = (
 			);
-			name = RESTAPI;
+			name = "RESTAPI iOS";
 			productName = RESTAPI;
 			productReference = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		215D7C531D4279E8001F4C45 /* RESTAPITests */ = {
+		215D7C531D4279E8001F4C45 /* RESTAPITests iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 215D7C611D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPITests" */;
+			buildConfigurationList = 215D7C611D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPITests iOS" */;
 			buildPhases = (
 				215D7C501D4279E8001F4C45 /* Sources */,
 				215D7C511D4279E8001F4C45 /* Frameworks */,
@@ -176,9 +263,45 @@
 			dependencies = (
 				215D7C571D4279E8001F4C45 /* PBXTargetDependency */,
 			);
-			name = RESTAPITests;
+			name = "RESTAPITests iOS";
 			productName = RESTAPITests;
-			productReference = 215D7C541D4279E8001F4C45 /* RESTAPITests.xctest */;
+			productReference = 215D7C541D4279E8001F4C45 /* RESTAPITests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		219AEB941E0933F2009C939B /* RESTAPI tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 219AEBA61E0933F2009C939B /* Build configuration list for PBXNativeTarget "RESTAPI tvOS" */;
+			buildPhases = (
+				219AEB901E0933F2009C939B /* Sources */,
+				219AEB911E0933F2009C939B /* Frameworks */,
+				219AEB921E0933F2009C939B /* Headers */,
+				219AEB931E0933F2009C939B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "RESTAPI tvOS";
+			productName = "RESTAPI tvOS";
+			productReference = 219AEB951E0933F2009C939B /* RESTAPI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		219AEB9C1E0933F2009C939B /* RESTAPI tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 219AEBA91E0933F2009C939B /* Build configuration list for PBXNativeTarget "RESTAPI tvOSTests" */;
+			buildPhases = (
+				219AEB991E0933F2009C939B /* Sources */,
+				219AEB9A1E0933F2009C939B /* Frameworks */,
+				219AEB9B1E0933F2009C939B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				219AEBA01E0933F2009C939B /* PBXTargetDependency */,
+			);
+			name = "RESTAPI tvOSTests";
+			productName = "RESTAPI tvOSTests";
+			productReference = 219AEB9D1E0933F2009C939B /* RESTAPI tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -187,17 +310,27 @@
 		215D7C411D4279E8001F4C45 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0800;
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = gujci;
 				TargetAttributes = {
 					215D7C491D4279E8001F4C45 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
 					};
 					215D7C531D4279E8001F4C45 = {
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Automatic;
+					};
+					219AEB941E0933F2009C939B = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
+					};
+					219AEB9C1E0933F2009C939B = {
+						CreatedOnToolsVersion = 8.2;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -213,8 +346,10 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				215D7C491D4279E8001F4C45 /* RESTAPI */,
-				215D7C531D4279E8001F4C45 /* RESTAPITests */,
+				215D7C491D4279E8001F4C45 /* RESTAPI iOS */,
+				215D7C531D4279E8001F4C45 /* RESTAPITests iOS */,
+				219AEB941E0933F2009C939B /* RESTAPI tvOS */,
+				219AEB9C1E0933F2009C939B /* RESTAPI tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -226,6 +361,7 @@
 			files = (
 				21A9B5C21D475D4800D2B57A /* Cartfile in Resources */,
 				21493A571D427A3B00B5CF8A /* LICENSE in Resources */,
+				219AEBB11E0934A5009C939B /* Info-tvOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,8 +369,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				219AEBBF1E093751009C939B /* SwiftyJSON.framework in Resources */,
 				21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */,
-				21EEEE3A1D7EC0E200099A9A /* SwiftyJSON.framework in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		219AEB931E0933F2009C939B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		219AEB9B1E0933F2009C939B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219AEBC31E09377B009C939B /* RESTAPI.framework in Resources */,
+				219AEBC21E093773009C939B /* SwiftyJSON.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,13 +412,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		219AEB901E0933F2009C939B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219AEBC71E093AC7009C939B /* API+JSONConvertible.swift in Sources */,
+				219AEBC61E093AC3009C939B /* API+Utils.swift in Sources */,
+				219AEBC51E093AC1009C939B /* API+JSONParseable.swift in Sources */,
+				219AEBC41E093ABE009C939B /* API.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		219AEB991E0933F2009C939B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				219AEBAC1E093404009C939B /* RESTAPITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		215D7C571D4279E8001F4C45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 215D7C491D4279E8001F4C45 /* RESTAPI */;
+			target = 215D7C491D4279E8001F4C45 /* RESTAPI iOS */;
 			targetProxy = 215D7C561D4279E8001F4C45 /* PBXContainerItemProxy */;
+		};
+		219AEBA01E0933F2009C939B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 219AEB941E0933F2009C939B /* RESTAPI tvOS */;
+			targetProxy = 219AEB9F1E0933F2009C939B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -380,13 +556,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = RESTAPI/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RESTAPI/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RESTAPI;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -405,13 +581,13 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = RESTAPI/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/RESTAPI/Info-iOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = mh_dylib;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = RESTAPI;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -420,6 +596,8 @@
 		215D7C621D4279E8001F4C45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -436,6 +614,8 @@
 		215D7C631D4279E8001F4C45 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -446,6 +626,102 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		219AEBA71E0933F2009C939B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/RESTAPI tvOS/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
+				PRODUCT_NAME = RESTAPI;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		219AEBA81E0933F2009C939B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = "";
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/RESTAPI tvOS/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
+				PRODUCT_NAME = RESTAPI;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		219AEBAA1E0933F2009C939B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = RESTAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.RESTAPI-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
+			};
+			name = Debug;
+		};
+		219AEBAB1E0933F2009C939B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				DEVELOPMENT_TEAM = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/tvOS",
+				);
+				INFOPLIST_FILE = RESTAPITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.RESTAPI-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
 		};
@@ -461,7 +737,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		215D7C5E1D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPI" */ = {
+		215D7C5E1D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPI iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				215D7C5F1D4279E8001F4C45 /* Debug */,
@@ -470,11 +746,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		215D7C611D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPITests" */ = {
+		215D7C611D4279E8001F4C45 /* Build configuration list for PBXNativeTarget "RESTAPITests iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				215D7C621D4279E8001F4C45 /* Debug */,
 				215D7C631D4279E8001F4C45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		219AEBA61E0933F2009C939B /* Build configuration list for PBXNativeTarget "RESTAPI tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				219AEBA71E0933F2009C939B /* Debug */,
+				219AEBA81E0933F2009C939B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		219AEBA91E0933F2009C939B /* Build configuration list for PBXNativeTarget "RESTAPI tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				219AEBAA1E0933F2009C939B /* Debug */,
+				219AEBAB1E0933F2009C939B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
