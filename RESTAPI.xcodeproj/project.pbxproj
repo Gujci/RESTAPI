@@ -18,7 +18,6 @@
 		2176DDF41D86E3D8005A1B30 /* API+JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */; };
 		219AEB9E1E0933F2009C939B /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
 		219AEBAC1E093404009C939B /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
-		219AEBB11E0934A5009C939B /* Info-tvOS.plist in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBB01E0934A5009C939B /* Info-tvOS.plist */; };
 		219AEBB21E093573009C939B /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		219AEBB51E093668009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBB41E093668009C939B /* SwiftyJSON.framework */; };
 		219AEBBC1E09367A009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBBB1E09367A009C939B /* SwiftyJSON.framework */; };
@@ -373,7 +372,6 @@
 			files = (
 				21A9B5C21D475D4800D2B57A /* Cartfile in Resources */,
 				21493A571D427A3B00B5CF8A /* LICENSE in Resources */,
-				219AEBB11E0934A5009C939B /* Info-tvOS.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
