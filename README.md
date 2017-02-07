@@ -22,7 +22,10 @@ for Swift 2.2 use the `0.2.2` tag. This version will not be supported.
 ```
 github "Gujci/RESTAPI" "== 0.2.2"
 ```
-
+## CocoaPods
+```
+pod 'RESTAPI'
+```
 
 # Examples
 
@@ -118,6 +121,7 @@ var sessionAuthenticator: RequestAuthenticator {
 ## 1.0
 - [x] Document the authentication
 - [x] Carthage support
+- [x] CocoaPods support
 - [ ] expand error types to almost full
 - [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
 - [ ] Add more unit tests
