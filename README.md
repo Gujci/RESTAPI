@@ -91,6 +91,38 @@ testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some 
 }
 ```
 Body parameters should comform to `ValidJSONObject` protocol. `Array` and `Dictionary` types implement this by default.
+Any custom type can implement `ValidJSONObject`, which requres a function that converts your type to `Data`.
+
+```swift
+func JSONFormat() throws -> Data
+```
+
+If you don't want that much controll and resposibility, you can implement `JSONConvertible`, which has a property named `parameterValue` which can be any `ValidJSONObject`. Practically you just have to convert your type to a `Dictionary` or an other `ValidJSONObject` just it like this:
+
+```swift
+struct ExampleData {
+    var body: String
+    var id: Int
+    var title: String
+    var userId: Int
+}
+
+extension ExampleData: JSONConvertible {
+    // this is valid json
+    var parameterValue: [String: Any] {
+        return ["body": body, "id": id, "title": title, "userId": userId]
+    }
+}
+```
+Additional fields can be added anytime to this property, also, you can exclude any properties. After implementing it, uploading is simple:
+
+```swift
+var uploadData = ExampleData(body: "body", id: 1, title: "title", userId: 2)
+
+testServerApi.post("/posts", data: uploadData) { (error, object) in
+    //...
+}
+```
 
 ### Authenticating requests
 
