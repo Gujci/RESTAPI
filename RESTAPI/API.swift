@@ -13,7 +13,7 @@ public protocol Queryable {
 
 /// Possibble response errors
 public enum APIError: Error {
-    case unknown
+    case other(Int)
     case notFound
     case unouthorized
     case forbidden
@@ -54,7 +54,7 @@ public enum APIError: Error {
                 self = .serverError
                 break
             default:
-                self = .unknown
+                self = .other(statusCode)
             }
         }
         else {
