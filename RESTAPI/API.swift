@@ -183,7 +183,7 @@ open class API {
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
             if let validData = data {
-                completion(APIError(withResponse: response), JSON(data: validData))
+                completion(APIError(withResponse: response), try? JSON(data: validData))
             }
             else {
                 completion(APIError(withResponse: response), nil)
