@@ -8,42 +8,48 @@
 
 import SwiftyJSON
 
-/// Converting to JSON error type
-public enum ValidJSONObjectParseError: Error {
-    case jsonSerializeError
-}
+/// legacy suppport 
+public typealias ValidJSONObject = ValidJSONData
 
+// MARK: - JSON encoding
 /// Protocol for objects that can be converted to JSONs for HTTP body parameters
-public protocol ValidJSONObject {
+public protocol ValidJSONData: ValidRequestData {
     func JSONFormat() throws -> Data
 }
 
-/// Protocol for custom types
-public protocol JSONConvertible: ValidJSONObject {
-    associatedtype T: ValidJSONObject
+// MARK: - Conformance to ValidRequestData
+public extension ValidJSONData {
+    
+    func type() -> ContentType { return .json }
+    
+    func requestData() throws -> Data { return try JSONFormat() }
+}
+
+// MARK: - JSONConvertible
+public protocol JSONConvertible: ValidJSONData {
+    associatedtype T: ValidJSONData
     var parameterValue: T {get}
 }
 
 public extension JSONConvertible  {
-    func JSONFormat() throws -> Data {
-        return try parameterValue.JSONFormat()
-    }
+    
+    func JSONFormat() throws -> Data { return try parameterValue.JSONFormat() }
 }
 
-//MARK: - default Implemetations
-extension Dictionary: ValidJSONObject {
+// MARK: - Default Implemetations
+extension Dictionary: ValidJSONData {
     public func JSONFormat() throws -> Data {
         return try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
     }
 }
 
-extension Array: ValidJSONObject {
+extension Array: ValidJSONData {
     public func JSONFormat() throws -> Data {
         return try JSONSerialization.data(withJSONObject: self, options: .prettyPrinted)
     }
 }
 
-extension String: ValidJSONObject {
+extension String: ValidJSONData {
     public func JSONFormat() throws -> Data {
         return self.data(using: String.Encoding.utf8)!
     }

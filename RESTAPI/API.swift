@@ -11,6 +11,22 @@ public protocol Queryable {
     func queryString(forKey key: String) -> [URLQueryItem]
 }
 
+public enum ContentType {
+    case json
+    case formEncoded
+}
+
+/// Converting to JSON error type
+public enum ObjectParseError: Error {
+    case jsonSerializeError
+    case formencodeError
+}
+
+public protocol ValidRequestData {
+    func type() -> ContentType
+    func requestData() throws -> Data
+}
+
 /// Possibble response errors
 public enum APIError: Error {
     case other(Int)
@@ -108,55 +124,10 @@ open class API {
     
     open var headers: [String: String] = {
        return [
-        "Content-Type":"application/json",
         "Accept": "application/json",
         "Accept-Language": Bundle.main.preferredLocalizations.first ?? "en"
         ]
     }()
-    
-    /// Performs a POST request to the given endpont
-    /// - Params:
-    ///     - endpoint: endpint of the server to perfor the request
-    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
-    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
-    ///     - completion: callback on return with error and data paramterst.
-    open func post(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
-            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "POST", completion: completion)
-    }
-    
-    /// Performs a PUT request to the given endpont
-    /// - Params:
-    ///     - endpoint: endpint of the server to perfor the request
-    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
-    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
-    ///     - completion: callback on return with error and data paramterst.
-    open func put(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
-            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "PUT", completion: completion)
-    }
-    
-    /// Performs a GET request to the given endpont
-    /// - Params:
-    ///     - endpoint: endpint of the server to perfor the request
-    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
-    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
-    ///     - completion: callback on return with error and data paramterst.
-    open func get(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
-            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "GET", completion: completion)
-    }
-    
-    /// Performs a DELETE request to the given endpont
-    /// - Params:
-    ///     - endpoint: endpint of the server to perfor the request
-    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
-    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
-    ///     - completion: callback on return with error and data paramterst.
-    open func delete(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidJSONObject? = nil,
-        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
-            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "DELETE", completion: completion)
-    }
     
     /// Initializes an API instance
     /// - Params:
@@ -172,7 +143,65 @@ open class API {
         }
     }
     
-    //MARK: - Private part
+    /// Performs a POST request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
+    open func post(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "POST", completion: completion)
+    }
+    
+    /// Performs a PUT request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
+    open func put(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "PUT", completion: completion)
+    }
+    
+    /// Performs a GET request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
+    open func get(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "GET", completion: completion)
+    }
+    
+    /// Performs a DELETE request to the given endpont
+    /// - Params:
+    ///     - endpoint: endpint of the server to perfor the request
+    ///     - query: query parameters of the request, Values should be Queryable, Array and String types are Queryable by default.
+    ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
+    ///     - completion: callback on return with error and data paramterst.
+    open func delete(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+        completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+            dataTask(clientURLRequest(endpoint, query: query, params: data), method: "DELETE", completion: completion)
+    }
+}
+
+//MARK: - Private part
+fileprivate extension ContentType {
+    
+    var headerValue: String {
+        switch self {
+        case .json:
+            return "application/json"
+        case .formEncoded:
+            return "application/x-www-form-urlencoded"
+        }
+    }
+}
+
+internal extension API {
     
     internal func dataTask(_ request: URLRequest, method: String, completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
         
@@ -182,28 +211,31 @@ open class API {
         let session = URLSession(configuration: URLSessionConfiguration.default)
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
-            if let validData = data {
-                completion(APIError(withResponse: response), try? JSON(data: validData))
-            }
-            else {
-                completion(APIError(withResponse: response), nil)
-            }
-            
+                            if let validData = data {
+                                completion(APIError(withResponse: response), try? JSON(data: validData))
+                            }
+                            else {
+                                completion(APIError(withResponse: response), nil)
+                            }
+                            
         }) .resume()
     }
     
-    internal func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidJSONObject?)
+    internal func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidRequestData?)
         -> URLRequest {
             var request = URLRequest(url: URL(string: baseURL + path, query: query))
             if let params = params {
-                let jsonData = try? params.JSONFormat()
+                let jsonData = try? params.requestData()
                 request.httpBody = jsonData
             }
             
             headers.forEach() {
                 request.addValue($0.1, forHTTPHeaderField: $0.0)
             }
-        
+            if let content = params {
+                request.addValue(content.type().headerValue, forHTTPHeaderField: "Content-Type")
+            }
+            
             return request
     }
 }

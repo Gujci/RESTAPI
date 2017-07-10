@@ -10,12 +10,14 @@
 		21493A571D427A3B00B5CF8A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 21493A561D427A3B00B5CF8A /* LICENSE */; };
 		21493A631D427E3000B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
 		21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
-		21493A651D427E3000B5CF8A /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* API+Utils.swift */; };
+		21493A651D427E3000B5CF8A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* Utils.swift */; };
 		2158E4541E09747C002A957E /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		215D7C4E1D4279E8001F4C45 /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		215D7C551D4279E8001F4C45 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
-		2176DDF41D86E3D8005A1B30 /* API+JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */; };
+		2176DDF41D86E3D8005A1B30 /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */; };
+		2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182D6361F13A14000B091CE /* FormEncodable.swift */; };
+		2182D6381F13A14000B091CE /* FormEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182D6361F13A14000B091CE /* FormEncodable.swift */; };
 		219AEB9E1E0933F2009C939B /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
 		219AEBAC1E093404009C939B /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
 		219AEBB21E093573009C939B /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,8 +30,8 @@
 		219AEBC31E09377B009C939B /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
 		219AEBC41E093ABE009C939B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
 		219AEBC51E093AC1009C939B /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
-		219AEBC61E093AC3009C939B /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* API+Utils.swift */; };
-		219AEBC71E093AC7009C939B /* API+JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */; };
+		219AEBC61E093AC3009C939B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* Utils.swift */; };
+		219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */; };
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
 		21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -80,14 +82,15 @@
 		21493A561D427A3B00B5CF8A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		21493A601D427E3000B5CF8A /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		21493A611D427E3000B5CF8A /* API+JSONParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+JSONParseable.swift"; sourceTree = "<group>"; };
-		21493A621D427E3000B5CF8A /* API+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+Utils.swift"; sourceTree = "<group>"; };
+		21493A621D427E3000B5CF8A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C4D1D4279E8001F4C45 /* RESTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESTAPI.h; sourceTree = "<group>"; };
 		215D7C4F1D4279E8001F4C45 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "RESTAPI/Info-iOS.plist"; sourceTree = "<group>"; };
 		215D7C541D4279E8001F4C45 /* RESTAPI iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RESTAPI iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C591D4279E8001F4C45 /* RESTAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPITests.swift; sourceTree = "<group>"; };
 		215D7C5B1D4279E8001F4C45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+JSONConvertible.swift"; sourceTree = "<group>"; };
+		2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONConvertible.swift; sourceTree = "<group>"; };
+		2182D6361F13A14000B091CE /* FormEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormEncodable.swift; sourceTree = "<group>"; };
 		219AEB951E0933F2009C939B /* RESTAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		219AEB9D1E0933F2009C939B /* RESTAPI tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "RESTAPI tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		219AEBB01E0934A5009C939B /* Info-tvOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "RESTAPI tvOS/Info-tvOS.plist"; sourceTree = "<group>"; };
@@ -173,8 +176,8 @@
 				215D7C4D1D4279E8001F4C45 /* RESTAPI.h */,
 				21493A601D427E3000B5CF8A /* API.swift */,
 				21493A611D427E3000B5CF8A /* API+JSONParseable.swift */,
-				2176DDF31D86E3D8005A1B30 /* API+JSONConvertible.swift */,
-				21493A621D427E3000B5CF8A /* API+Utils.swift */,
+				2182D63D1F13A5D700B091CE /* ValidRequestData */,
+				21493A621D427E3000B5CF8A /* Utils.swift */,
 			);
 			path = RESTAPI;
 			sourceTree = "<group>";
@@ -186,6 +189,15 @@
 				215D7C5B1D4279E8001F4C45 /* Info.plist */,
 			);
 			path = RESTAPITests;
+			sourceTree = "<group>";
+		};
+		2182D63D1F13A5D700B091CE /* ValidRequestData */ = {
+			isa = PBXGroup;
+			children = (
+				2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */,
+				2182D6361F13A14000B091CE /* FormEncodable.swift */,
+			);
+			name = ValidRequestData;
 			sourceTree = "<group>";
 		};
 		219AEBAD1E093455009C939B /* Supporting Files */ = {
@@ -407,9 +419,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21493A651D427E3000B5CF8A /* API+Utils.swift in Sources */,
+				2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */,
+				21493A651D427E3000B5CF8A /* Utils.swift in Sources */,
 				21493A631D427E3000B5CF8A /* API.swift in Sources */,
-				2176DDF41D86E3D8005A1B30 /* API+JSONConvertible.swift in Sources */,
+				2176DDF41D86E3D8005A1B30 /* JSONConvertible.swift in Sources */,
 				21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -426,8 +439,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				219AEBC71E093AC7009C939B /* API+JSONConvertible.swift in Sources */,
-				219AEBC61E093AC3009C939B /* API+Utils.swift in Sources */,
+				2182D6381F13A14000B091CE /* FormEncodable.swift in Sources */,
+				219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */,
+				219AEBC61E093AC3009C939B /* Utils.swift in Sources */,
 				219AEBC51E093AC1009C939B /* API+JSONParseable.swift in Sources */,
 				219AEBC41E093ABE009C939B /* API.swift in Sources */,
 			);

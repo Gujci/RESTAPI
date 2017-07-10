@@ -36,7 +36,7 @@ extension ExamplePostModel: JSONParseable {
 }
 
 extension ExamplePostModel: JSONConvertible {
-
+    
     var parameterValue: [String: Any] {
         return ["body": body, "id": id, "title": title, "userId": userId]
     }
@@ -71,6 +71,22 @@ class RESTAPITests: XCTestCase {
         
         testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
             XCTAssertEqual(responsePost?.id, example.id)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testFormPost() {
+        let expectation = self.expectation(description: "form post")
+        let legacyServerApi = API(withBaseUrl: "https://posttestserver.com")
+        
+        legacyServerApi.post("/post.php", query: ["dir": "gujci_test"], data: ["key": "value", "body": "any"].formValue){ (error, response) in
+            XCTAssertNil(error)
             expectation.fulfill()
         }
         
