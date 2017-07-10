@@ -158,3 +158,4 @@ var sessionAuthenticator: RequestAuthenticator {
 - [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
 - [ ] Add more unit tests
 - [x] Travis
+- [ ] Document form-encoded-support related changes
