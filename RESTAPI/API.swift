@@ -232,9 +232,7 @@ internal extension API {
             headers.forEach() {
                 request.addValue($0.1, forHTTPHeaderField: $0.0)
             }
-            if let content = params {
-                request.addValue(content.type().headerValue, forHTTPHeaderField: "Content-Type")
-            }
+            request.addValue((params?.type() ?? .json).headerValue, forHTTPHeaderField: "Content-Type")
             
             return request
     }
