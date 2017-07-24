@@ -7,6 +7,8 @@ An easy tool to communicate with your server's API in JSON format. Supports quer
 
 The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 
+`PATCH` is added at **0.6.0**, maybe it's not so RESTful, but you have it.
+
 # Installation
 ## Carthage
 ```
@@ -154,7 +156,7 @@ var sessionAuthenticator: RequestAuthenticator {
 - [x] Document the authentication
 - [x] Carthage support
 - [x] CocoaPods support
-- [ ] expand error types to almost full
+- [x] expand error types to almost full
 - [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
 - [ ] Add more unit tests
 - [x] Travis
