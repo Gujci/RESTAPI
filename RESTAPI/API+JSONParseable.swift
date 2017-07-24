@@ -14,6 +14,7 @@ public protocol JSONParseable {
 //TODO: - make JSON and [JSON] comform to JSONParseable to reduce redundant code
 public extension API {
     
+    // MARK: - single JSONParseable
     public func post<T: JSONParseable>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
               completion: @escaping ((_ error: APIError?, _ object: T?) -> ())) {
         parseableRequest("POST", endpoint: endpoint, query: query, data: data, completion: completion)
@@ -34,6 +35,12 @@ public extension API {
         parseableRequest("DELETE", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
+    public func patch<T: JSONParseable>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+                       completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
+        parseableRequest("PATCH", endpoint: endpoint, query: query, data: data, completion: completion)
+    }
+    
+    // MARK: - JSONParseable array
     public func post<T: JSONParseable>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
               completion: @escaping ((_ error: APIError?, _ object: [T]?) -> ())) {
         parseableRequest("POST", endpoint: endpoint, query: query, data: data, completion: completion)
@@ -54,8 +61,12 @@ public extension API {
         parseableRequest("DELETE", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
-    //MARK: - Private part
+    public func patch<T: JSONParseable>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+                       completion: @escaping (_ error: APIError?, _ object: [T]?) -> ()) {
+        parseableRequest("PATCH", endpoint: endpoint, query: query, data: data, completion: completion)
+    }
     
+    //MARK: - Private part
     fileprivate func parseableRequest<T: JSONParseable>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
                                    data: ValidRequestData? = nil,
                                    completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {

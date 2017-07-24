@@ -65,14 +65,23 @@ class RESTAPITests: XCTestCase {
         }
     }
     
-    func testPost() {
+    func testPostAndPatch() {
         let expectation = self.expectation(description: "some")
         let example = ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9)
         
         testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
             XCTAssertEqual(responsePost?.id, example.id)
-            expectation.fulfill()
+            guard let responsePost = responsePost else {
+                XCTAssert(false)
+                return
+            }
+            
+            self.testServerApi.patch("/posts/\(responsePost.id)", data: ["title": "Other title"]) { (error,  responsePost: ExamplePostModel?) in
+                XCTAssertEqual(responsePost?.title, "Other title")
+                expectation.fulfill()
+            }
         }
+        
         
         waitForExpectations(timeout: 10) { error in
             if let error = error {

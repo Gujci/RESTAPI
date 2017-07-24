@@ -30,12 +30,16 @@ public protocol ValidRequestData {
 /// Possibble response errors
 public enum APIError: Error {
     case other(Int)
-    case notFound
-    case unouthorized
-    case forbidden
-    case serverError
     case multipleChoice
     case badRequest
+    case unouthorized
+    case forbidden
+    case notFound
+    case methodNotAllowed
+    case notAcceptable
+    case requestTimeout
+    case conflict
+    case serverError
     case notImplemented
     case gatewayTimeout
     //TODO: - expand
@@ -47,19 +51,22 @@ public enum APIError: Error {
                 return nil
             case 300:
                 self = .multipleChoice
-                break
             case 400:
                 self = .badRequest
-                break
             case 401:
                 self = .unouthorized
-                break
             case 403:
                 self = .forbidden
-                break
             case 404:
                 self = .notFound
-                break
+            case 405:
+                self = .methodNotAllowed
+            case 406:
+                self = .notAcceptable
+            case 408:
+                self = .requestTimeout
+            case 409:
+                self = .conflict
             case 501:
                 self = .notImplemented
                 break
@@ -185,6 +192,11 @@ open class API {
     open func delete(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
         completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
             dataTask(clientURLRequest(endpoint, query: query, params: data), method: "DELETE", completion: completion)
+    }
+    
+    open func patch(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+                     completion: @escaping (_ error: APIError?, _ object: JSON?) -> ()) {
+        dataTask(clientURLRequest(endpoint, query: query, params: data), method: "PATCH", completion: completion)
     }
 }
 
