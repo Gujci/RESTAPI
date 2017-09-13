@@ -150,6 +150,10 @@ var sessionAuthenticator: RequestAuthenticator {
 //...
 ```
 
+# Debugging
+
+To turn on logging add `APIErrorLoggingEnabled` to 'Arguments passed on launch' at Schema/Run/Arguments
+
 # TODO list
 
 ## 1.0
