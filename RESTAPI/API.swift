@@ -224,7 +224,14 @@ internal extension API {
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
                             if let err = APIError(withResponse: response), ProcessInfo.processInfo.arguments.contains("APIErrorLoggingEnabled") {
-                                print("\(err): \(data != nil ? JSON(data: data!) : "Empty response")")
+                                switch data {
+                                case let data? where JSON(data: data) != .null:
+                                    print("\(err): \(JSON(data: data))")
+                                case let data? where String(data: data, encoding: .utf8) != nil:
+                                    print("\(err): \(String(data: data, encoding: .utf8)!)")
+                                default:
+                                    print("\(err) with no description")
+                                }
                             }
                             if let validData = data {
                                 completion(APIError(withResponse: response), JSON(data: validData))
