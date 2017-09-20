@@ -24,6 +24,15 @@ for Swift 2.2 use the `0.2.2` tag. This version will not be supported.
 ```
 github "Gujci/RESTAPI" "== 0.2.2"
 ```
+
+### Swift 3
+
+for Swift 3 use the `0.6.1` tag. This version will not be supported.
+
+```
+github "Gujci/RESTAPI" "== 0.6.1"
+```
+
 ## CocoaPods
 ```
 pod 'RESTAPI'
