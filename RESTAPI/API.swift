@@ -226,11 +226,11 @@ internal extension API {
                             if let err = APIError(withResponse: response), ProcessInfo.processInfo.arguments.contains("APIErrorLoggingEnabled") {
                                 switch data {
                                 case let data? where JSON(data: data) != .null:
-                                    print("\(err): \(JSON(data: data))")
+                                    print("\(request.url?.absoluteString ?? "Unknown URL") \(err)\n \(JSON(data: data))")
                                 case let data? where String(data: data, encoding: .utf8) != nil:
-                                    print("\(err): \(String(data: data, encoding: .utf8)!)")
+                                    print("\(request.url?.absoluteString ?? "Unknown URL") \(err)\n \(String(data: data, encoding: .utf8)!)")
                                 default:
-                                    print("\(err) with no description")
+                                    print("\(request.url?.absoluteString ?? "Unknown URL") \(err) with no description")
                                 }
                             }
                             if let validData = data {
