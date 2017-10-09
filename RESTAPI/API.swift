@@ -221,6 +221,17 @@ internal extension API {
         request.httpMethod = method
         
         let session = URLSession(configuration: URLSessionConfiguration.default)
+        if ProcessInfo.processInfo.arguments.contains("APIRequestLoggingEnabled") {
+            let loggedRequest = authentication.authenticateURLRequest(request)
+            print("\n\(loggedRequest.httpMethod ?? "No http method") \(loggedRequest.url?.absoluteString ?? "No URL")")
+            print("HEADERS:\n\(loggedRequest.allHTTPHeaderFields?.reduce("", { return $0 + "\t\($1.key): \($1.value)\n" }) ?? "No header fields")")
+            if let body = loggedRequest.httpBody {
+                print("BODY:\n\(String(data: body, encoding: .utf8) ?? "Cannot parse request body")")
+            }
+            else {
+                print("Empty request body")
+            }
+        }
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
                             if let err = APIError(withResponse: response), ProcessInfo.processInfo.arguments.contains("APIErrorLoggingEnabled") {
