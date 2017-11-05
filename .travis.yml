@@ -16,8 +16,8 @@ before_deploy:
 - carthage archive $FRAMEWORK_NAME
 script:
 - set -o pipefail
-- travis_retry xcodebuild -scheme 'RESTAPI iOS' -destination 'platform=iOS Simulator,name=iPhone 6,OS=10.0' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-- travis_retry xcodebuild -scheme 'RESTAPI tvOS' -destination 'platform=tvOS Simulator,name=Apple TV 1080p' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+- travis_retry xcodebuild -scheme 'RESTAPI iOS' -destination 'platform=iOS Simulator,name=iPhone 8' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+- travis_retry xcodebuild -scheme 'RESTAPI tvOS' -destination 'platform=tvOS Simulator,name=Apple TV' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
 deploy:
   provider: releases
   api_key:
