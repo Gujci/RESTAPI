@@ -24,7 +24,6 @@
 		219AEBB51E093668009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBB41E093668009C939B /* SwiftyJSON.framework */; };
 		219AEBBC1E09367A009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBBB1E09367A009C939B /* SwiftyJSON.framework */; };
 		219AEBBD1E09373B009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBBB1E09367A009C939B /* SwiftyJSON.framework */; };
-		219AEBBF1E093751009C939B /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBBE1E093751009C939B /* SwiftyJSON.framework */; };
 		219AEBC01E093760009C939B /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBB91E093669009C939B /* SwiftyJSON.framework */; };
 		219AEBC21E093773009C939B /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBC11E093773009C939B /* SwiftyJSON.framework */; };
 		219AEBC31E09377B009C939B /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
@@ -35,6 +34,8 @@
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
 		21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		21F570AC1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */; };
+		21F570AD1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,9 +101,9 @@
 		219AEBB91E093669009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyJSON.framework; sourceTree = "<group>"; };
 		219AEBBA1E093669009C939B /* SwiftyJSON.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = SwiftyJSON.framework.dSYM; sourceTree = "<group>"; };
 		219AEBBB1E09367A009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
-		219AEBBE1E093751009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		219AEBC11E093773009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		21A9B5C11D475D4800D2B57A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				219AEBC11E093773009C939B /* SwiftyJSON.framework */,
-				219AEBBE1E093751009C939B /* SwiftyJSON.framework */,
 				21493A561D427A3B00B5CF8A /* LICENSE */,
 				21493A541D427A3700B5CF8A /* README.md */,
 				21A9B5C11D475D4800D2B57A /* Cartfile */,
@@ -178,6 +178,7 @@
 				21493A611D427E3000B5CF8A /* API+JSONParseable.swift */,
 				2182D63D1F13A5D700B091CE /* ValidRequestData */,
 				21493A621D427E3000B5CF8A /* Utils.swift */,
+				21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */,
 			);
 			path = RESTAPI;
 			sourceTree = "<group>";
@@ -391,7 +392,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				219AEBBF1E093751009C939B /* SwiftyJSON.framework in Resources */,
 				21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +419,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21F570AC1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */,
 				2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */,
 				21493A651D427E3000B5CF8A /* Utils.swift in Sources */,
 				21493A631D427E3000B5CF8A /* API.swift in Sources */,
@@ -439,6 +440,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21F570AD1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */,
 				2182D6381F13A14000B091CE /* FormEncodable.swift in Sources */,
 				219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */,
 				219AEBC61E093AC3009C939B /* Utils.swift in Sources */,

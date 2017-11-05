@@ -48,10 +48,9 @@ class RESTAPITests: XCTestCase {
     let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
     
     func testQuery() {
-        let expectation = self.expectation(description: "some")
+        let expectation = self.expectation(description: "querry")
         
-        testServerApi.get("/posts", query: ["userId": "1"])
-        { (error, posts: [ExamplePostModel]?) in
+        testServerApi.get("/posts", query: ["userId": "1"]) { (error, posts: [ExamplePostModel]?) in
             posts?.forEach() { post in
                 XCTAssert(post.userId == 1)
             }
@@ -66,7 +65,7 @@ class RESTAPITests: XCTestCase {
     }
     
     func testPostAndPatch() {
-        let expectation = self.expectation(description: "some")
+        let expectation = self.expectation(description: "post&patch")
         let example = ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9)
         
         testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
@@ -90,6 +89,21 @@ class RESTAPITests: XCTestCase {
         }
     }
     
+    func testError() {
+        let expectation = self.expectation(description: "error")
+        
+        testServerApi.put("/posts/undefined") { (error, posts) in
+            guard let err = error, err == APIError.notFound else { return }
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     func testFormPost() {
         let expectation = self.expectation(description: "form post")
         let legacyServerApi = API(withBaseUrl: "https://posttestserver.com")
@@ -99,7 +113,7 @@ class RESTAPITests: XCTestCase {
             expectation.fulfill()
         }
         
-        waitForExpectations(timeout: 10) { error in
+        waitForExpectations(timeout: 15) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }

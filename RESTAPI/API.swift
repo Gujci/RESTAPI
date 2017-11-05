@@ -235,17 +235,17 @@ internal extension API {
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
                             if let err = APIError(withResponse: response), ProcessInfo.processInfo.arguments.contains("APIErrorLoggingEnabled") {
-                                switch data {
-                                case let data? where JSON(data: data) != .null:
-                                    print("\(request.url?.absoluteString ?? "Unknown URL") \(err)\n \(JSON(data: data))")
-                                case let data? where String(data: data, encoding: .utf8) != nil:
+                                switch (data, (data != nil ? try? JSON(data: data!) : nil)) {
+                                case let (_, json) where json != .null:
+                                    print("\(request.url?.absoluteString ?? "Unknown URL") \(err)\n \(json?.description ?? "No JSON")")
+                                case let (data?, _) where String(data: data, encoding: .utf8) != nil:
                                     print("\(request.url?.absoluteString ?? "Unknown URL") \(err)\n \(String(data: data, encoding: .utf8)!)")
                                 default:
                                     print("\(request.url?.absoluteString ?? "Unknown URL") \(err) with no description")
                                 }
                             }
                             if let validData = data {
-                                completion(APIError(withResponse: response), JSON(data: validData))
+                                completion(APIError(withResponse: response), try? JSON(data: validData))
                             }
                             else {
                                 completion(APIError(withResponse: response), nil)
