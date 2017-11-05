@@ -40,7 +40,9 @@ pod 'RESTAPI'
 
 # Examples
 
-### Simple request
+##  Request
+
+### Basic request
 
 By default you can perform a single request which returns a simple JSON response.
 
@@ -50,6 +52,7 @@ testServerApi.get("/posts") { (error, data) in
     //This data will be SwiftyJSON's Optional JSON type by default (data: JSON?)
 }
 ```
+
 Or if you want to, you can get a parsed response type with the same request.
 
 ### Request with expected response type
@@ -94,19 +97,24 @@ testServerApi.get("/posts", query: ["userId" : "1"]) { (error, object: [ExampleR
 
 Values in the query parameter dictionary must implement the `Queryable` protocol, `String` and `Array` types implement this by default.
 
-### Body parameters
+## Body parameters
+
+### Simple body
 
 ```swift
 testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some title", "userId": 9]) { (error, object) in
     //...
 }
 ```
+
 Body parameters should comform to `ValidJSONObject` protocol. `Array` and `Dictionary` types implement this by default.
 Any custom type can implement `ValidJSONObject`, which requres a function that converts your type to `Data`.
 
 ```swift
 func JSONFormat() throws -> Data
 ```
+
+### Custom object in body
 
 If you don't want that much controll and resposibility, you can implement `JSONConvertible`, which has a property named `parameterValue` which can be any `ValidJSONObject`. Practically you just have to convert your type to a `Dictionary` or an other `ValidJSONObject` just it like this:
 
@@ -125,6 +133,7 @@ extension ExampleData: JSONConvertible {
     }
 }
 ```
+
 Additional fields can be added anytime to this property, also, you can exclude any properties. After implementing it, uploading is simple:
 
 ```swift
@@ -135,7 +144,30 @@ testServerApi.post("/posts", data: uploadData) { (error, object) in
 }
 ```
 
-### Authenticating requests
+### Form encoded request
+
+The framework also supports `form-encoded` requests as long as the response is in `JSON` format. To send one use a similar json request, but the body must comform to `ValidFormData` protocol.
+
+If you want to save time, and ok with simple `[String: String]` format, just implement the `FormEncodable` protocol, which is much easyer and automatically conform to `ValidFormData`.
+
+`Dictionary` has an added element called `formValue`, which is automatically conforms to `ValidFormData`.  This is mostly a workaruond for a problem described [later](###Disclaimer)
+
+```swift
+
+extension ExampleData: FormEncodable {
+
+var parameters: [String: String] {
+        return ["body": body, "id": "\(id)", "title": title, "userId": "\(userId)"]
+    }
+}
+
+// ...
+oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.formValue){ (error, response) in
+    // ... do something
+}
+```
+
+## Authenticating requests
 
 To authenticate a request, you have to set the `authentication` property of the API instance. For now this framework supports simple,  access token based authentications in HTTP header and URL query. This is a simple example to show how to set up a HTTP header based authentication.
 
@@ -159,6 +191,23 @@ var sessionAuthenticator: RequestAuthenticator {
 //...
 ```
 
+## General body protocol
+
+Any request body sent, must conform to `ValidRequestData` protocol. The 2 mentioned above are just some pre-implemented, widely used cases. If you use a custom protocol, or something, which is not implemented in this framework, just made the desired types conform to `ValidRequestData`, and they can be automatically used with the framework.
+
+```swift
+public protocol ValidRequestData {
+    // defines the content type header
+    func type() -> ContentType
+    // returns the data, to sent to server
+    func requestData() throws -> Data
+}
+```
+
+### Disclaimer
+
+One type must not implement this protocol twice or more, meaning it is not supported to conform to both `ValidFormData` and `JSONConvertible`.
+
 # Debugging
 
 To turn on request logging add `APIRequestLoggingEnabled` to 'Arguments passed on launch' at Schema/Run/Arguments.
@@ -175,4 +224,4 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
 - [ ] Add more unit tests
 - [x] Travis
-- [ ] Document form-encoded-support related changes
+- [x] Document form-encoded-support related changes
