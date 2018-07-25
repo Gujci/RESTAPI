@@ -13,13 +13,12 @@ import SwiftyJSON
 //MARK: - ExamplePostModel
 struct ExamplePostModel {
     var body: String
-    var id: Int
+    var id: Int?
     var title: String
     var userId: Int
     
-    init(withBody body: String, id: Int, title: String, userId: Int) {
+    init(withBody body: String, title: String, userId: Int) {
         self.body = body
-        self.id = id
         self.title = title
         self.userId = userId
     }
@@ -38,7 +37,7 @@ extension ExamplePostModel: JSONParseable {
 extension ExamplePostModel: JSONConvertible {
     
     var parameterValue: [String: Any] {
-        return ["body": body, "id": id, "title": title, "userId": userId]
+        return ["body": body, "title": title, "userId": userId]
     }
 }
 
@@ -66,16 +65,15 @@ class RESTAPITests: XCTestCase {
     
     func testPostAndPatch() {
         let expectation = self.expectation(description: "post&patch")
-        let example = ExamplePostModel(withBody: "something", id: 1, title: "Some title", userId: 9)
+        let example = ExamplePostModel(withBody: "something", title: "Some title", userId: 9)
         
         testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
-            XCTAssertEqual(responsePost?.id, example.id)
-            guard let responsePost = responsePost else {
+            guard let _ = responsePost?.id else {
                 XCTAssert(false)
                 return
             }
             
-            self.testServerApi.patch("/posts/\(responsePost.id)", data: ["title": "Other title"]) { (error,  responsePost: ExamplePostModel?) in
+            self.testServerApi.patch("/posts/1", data: ["title": "Other title"]) { (error,  responsePost: ExamplePostModel?) in
                 XCTAssertEqual(responsePost?.title, "Other title")
                 expectation.fulfill()
             }

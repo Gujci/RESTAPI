@@ -67,11 +67,11 @@ public extension API {
     }
     
     //MARK: - Private part
-    fileprivate func parseableRequest<T: JSONParseable>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
+    private func parseableRequest<T: JSONParseable>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
                                    data: ValidRequestData? = nil,
                                    completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
         dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { err ,data in
-            if let validData = data {
+            if let validData = data, err == nil {
                 completion(err, T(withJSON: validData))
             }
             else {
@@ -80,11 +80,11 @@ public extension API {
         }
     }
     
-    fileprivate func parseableRequest<T: JSONParseable>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
+    private func parseableRequest<T: JSONParseable>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
                                   data: ValidRequestData? = nil,
                                   completion: @escaping (_ error: APIError?, _ object: [T]?) -> ()) {
         dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { err ,data in
-            if let arrayData = data?.array {
+            if let arrayData = data?.array, err == nil {
                 let JSONData = arrayData.map() {element in
                     return T(withJSON: element)
                 }
