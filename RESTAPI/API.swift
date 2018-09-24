@@ -14,6 +14,7 @@ public protocol Queryable {
 public enum ContentType {
     case json
     case formEncoded
+    case custom(String)
 }
 
 /// Converting to JSON error type
@@ -209,6 +210,8 @@ fileprivate extension ContentType {
             return "application/json"
         case .formEncoded:
             return "application/x-www-form-urlencoded"
+        case let .custom(format):
+            return format
         }
     }
 }
@@ -257,9 +260,9 @@ internal extension API {
     internal func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidRequestData?)
         -> URLRequest {
             var request = URLRequest(url: URL(string: baseURL + path, query: query))
-            if let params = params {
-                let jsonData = try? params.requestData()
-                request.httpBody = jsonData
+            if let params = params, let httpData = try? params.requestData() {
+                request.httpBody = httpData
+                request.addValue(String(httpData.count), forHTTPHeaderField: "Content-Length")
             }
             
             headers.forEach() {
