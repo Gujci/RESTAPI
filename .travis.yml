@@ -1,11 +1,12 @@
 language: objective-c
-osx_image: xcode9.4
+osx_image: xcode10
 xcode_project: RESTAPI.xcodeproj
 xcode_scheme: RESTAPI
 xcode_sdk: iphonesimulator10.0
 env:
   global:
   - FRAMEWORK_NAME=RESTAPI
+  - IMAGE_FRAMEWORK_NAME=RESTAPIImage
 before_install:
 - brew update
 - brew outdated carthage || brew upgrade carthage
@@ -14,6 +15,7 @@ before_script:
 before_deploy:
 - carthage build --no-skip-current
 - carthage archive $FRAMEWORK_NAME
+- carthage archive $IMAGE_FRAMEWORK_NAME
 script:
 - set -o pipefail
 - travis_retry xcodebuild -scheme 'RESTAPI iOS' -destination 'platform=iOS Simulator,name=iPhone 8' build test CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
@@ -22,7 +24,9 @@ deploy:
   provider: releases
   api_key:
     secure: STUvYfgc5bdN/n/1FGB9Hf+cNCMq7Df0Y3PrxSRwMC5rZHy/Y7stDIDh9W1h/rV0QKwmV76Whb5Li3RfuFRqLbOmakPH/z/ijz5X0+pxj3UWH57gpAhJSSfbqPhc5nJ94E12XBGp2Vtmpixh5e6EIfmbVF3+U0LqIL8RaO5sljGGEN5uwR/ZYLQzhNeXnSS0/O3ZPCkdUiA5/U5HBZhvYEH88Dq7FiF0+1oot5CRMcGb1d5gXfReb0i2X3aBxkpVbHYCrZL9UIgT0bFPLv0RYNTcgQRciTtFxzrAZVxLQzRCX+E5g7s1HW+RrWtuea8opP/d6SmJtGbvU1n+eeVWYKR+3TngmDKCbSsUa6MTW6r8t2nW9BA+H46koqj9jwku5KBtYAmXaz3cVuocjw4OVMuS97jBqKMwqg0TYN+NAokNF7eR/tbvOCByiqLOn8hii/Ua22ixrYClkn5KsLB/WqRjTHV9XaPtdwT5t7iKuzQtwErEB0vafR+Fpb6uBPfHAMmmUH7/toNmBpcBr6GG6lWmJUD3DdjXOpyB46OigRVyTIt0x1CgO+bbU5ZSr+lmZuRS++IXL2E5vbN3zXlJNvG6KNPdEmgEsIBEmOJgH6tErpF3WKI5RGt0n4qmkEnZZmLcjbcZ01YgHqfYGZBBHQ+h/L3LeaLt93QuZu3g6sY=
-  file: "$FRAMEWORK_NAME.framework.zip"
+  file:
+    - "$FRAMEWORK_NAME.framework.zip"
+    - "$IMAGE_FRAMEWORK_NAME.framework.zip"
   skip_cleanup: true
   on:
     repo: Gujci/RESTAPI
