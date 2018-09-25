@@ -12,6 +12,7 @@
 		213C5EB6215A44DD0039DC20 /* RESTAPIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EB5215A44DD0039DC20 /* RESTAPIImageTests.swift */; };
 		213C5EB8215A44DD0039DC20 /* RESTAPIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 213C5EAA215A44DD0039DC20 /* RESTAPIImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		213C5EC2215A450B0039DC20 /* API+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EC1215A450B0039DC20 /* API+Image.swift */; };
+		213C5EC3215A74770039DC20 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		21493A571D427A3B00B5CF8A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 21493A561D427A3B00B5CF8A /* LICENSE */; };
 		21493A631D427E3000B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
 		21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
@@ -50,13 +51,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 213C5EA7215A44DD0039DC20;
 			remoteInfo = RESTAPIImage;
-		};
-		213C5EBF215A44FA0039DC20 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 215D7C411D4279E8001F4C45 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 215D7C491D4279E8001F4C45;
-			remoteInfo = "RESTAPI iOS";
 		};
 		215D7C561D4279E8001F4C45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -138,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				213C5EC3215A74770039DC20 /* RESTAPI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -340,7 +335,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				213C5EC0215A44FA0039DC20 /* PBXTargetDependency */,
 			);
 			name = RESTAPIImage;
 			productName = RESTAPIImage;
@@ -446,7 +440,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = gujci;
 				TargetAttributes = {
 					213C5EA7215A44DD0039DC20 = {
@@ -460,12 +454,12 @@
 					};
 					215D7C491D4279E8001F4C45 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					215D7C531D4279E8001F4C45 = {
 						CreatedOnToolsVersion = 7.3.1;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					219AEB941E0933F2009C939B = {
@@ -618,11 +612,6 @@
 			target = 213C5EA7215A44DD0039DC20 /* RESTAPIImage */;
 			targetProxy = 213C5EB2215A44DD0039DC20 /* PBXContainerItemProxy */;
 		};
-		213C5EC0215A44FA0039DC20 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 215D7C491D4279E8001F4C45 /* RESTAPI iOS */;
-			targetProxy = 213C5EBF215A44FA0039DC20 /* PBXContainerItemProxy */;
-		};
 		215D7C571D4279E8001F4C45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 215D7C491D4279E8001F4C45 /* RESTAPI iOS */;
@@ -653,7 +642,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -693,7 +682,7 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -786,14 +775,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -837,14 +834,22 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -894,7 +899,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
 				PRODUCT_NAME = RESTAPI;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -919,7 +925,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPI;
 				PRODUCT_NAME = RESTAPI;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -937,7 +944,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PLATFORM_DIR)/Developer/Library/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -955,7 +963,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(PLATFORM_DIR)/Developer/Library/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
