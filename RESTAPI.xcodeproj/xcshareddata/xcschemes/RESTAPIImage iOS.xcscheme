@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "213C5EA7215A44DD0039DC20"
-               BuildableName = "RESTAPIImage.framework"
-               BlueprintName = "RESTAPIImage"
+               BuildableName = "RESTAPIImage_iOS.framework"
+               BlueprintName = "RESTAPIImage iOS"
                ReferencedContainer = "container:RESTAPI.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -43,8 +43,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "213C5EA7215A44DD0039DC20"
-            BuildableName = "RESTAPIImage.framework"
-            BlueprintName = "RESTAPIImage"
+            BuildableName = "RESTAPIImage_iOS.framework"
+            BlueprintName = "RESTAPIImage iOS"
             ReferencedContainer = "container:RESTAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -65,8 +65,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "213C5EA7215A44DD0039DC20"
-            BuildableName = "RESTAPIImage.framework"
-            BlueprintName = "RESTAPIImage"
+            BuildableName = "RESTAPIImage_iOS.framework"
+            BlueprintName = "RESTAPIImage iOS"
             ReferencedContainer = "container:RESTAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -83,8 +83,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "213C5EA7215A44DD0039DC20"
-            BuildableName = "RESTAPIImage.framework"
-            BlueprintName = "RESTAPIImage"
+            BuildableName = "RESTAPIImage_iOS.framework"
+            BlueprintName = "RESTAPIImage iOS"
             ReferencedContainer = "container:RESTAPI.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

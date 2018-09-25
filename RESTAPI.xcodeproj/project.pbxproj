@@ -52,6 +52,13 @@
 			remoteGlobalIDString = 213C5EA7215A44DD0039DC20;
 			remoteInfo = RESTAPIImage;
 		};
+		213C5ED7215A85360039DC20 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 215D7C411D4279E8001F4C45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 215D7C491D4279E8001F4C45;
+			remoteInfo = "RESTAPI iOS";
+		};
 		215D7C561D4279E8001F4C45 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 215D7C411D4279E8001F4C45 /* Project object */;
@@ -323,9 +330,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		213C5EA7215A44DD0039DC20 /* RESTAPIImage */ = {
+		213C5EA7215A44DD0039DC20 /* RESTAPIImage iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 213C5EB9215A44DD0039DC20 /* Build configuration list for PBXNativeTarget "RESTAPIImage" */;
+			buildConfigurationList = 213C5EB9215A44DD0039DC20 /* Build configuration list for PBXNativeTarget "RESTAPIImage iOS" */;
 			buildPhases = (
 				213C5EA3215A44DD0039DC20 /* Headers */,
 				213C5EA4215A44DD0039DC20 /* Sources */,
@@ -335,8 +342,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				213C5ED8215A85360039DC20 /* PBXTargetDependency */,
 			);
-			name = RESTAPIImage;
+			name = "RESTAPIImage iOS";
 			productName = RESTAPIImage;
 			productReference = 213C5EA8215A44DD0039DC20 /* RESTAPIImage.framework */;
 			productType = "com.apple.product-type.framework";
@@ -488,7 +496,7 @@
 				215D7C531D4279E8001F4C45 /* RESTAPI iOSTests */,
 				219AEB941E0933F2009C939B /* RESTAPI tvOS */,
 				219AEB9C1E0933F2009C939B /* RESTAPI tvOSTests */,
-				213C5EA7215A44DD0039DC20 /* RESTAPIImage */,
+				213C5EA7215A44DD0039DC20 /* RESTAPIImage iOS */,
 				213C5EAF215A44DD0039DC20 /* RESTAPIImageTests */,
 			);
 		};
@@ -609,8 +617,13 @@
 /* Begin PBXTargetDependency section */
 		213C5EB3215A44DD0039DC20 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 213C5EA7215A44DD0039DC20 /* RESTAPIImage */;
+			target = 213C5EA7215A44DD0039DC20 /* RESTAPIImage iOS */;
 			targetProxy = 213C5EB2215A44DD0039DC20 /* PBXContainerItemProxy */;
+		};
+		213C5ED8215A85360039DC20 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 215D7C491D4279E8001F4C45 /* RESTAPI iOS */;
+			targetProxy = 213C5ED7215A85360039DC20 /* PBXContainerItemProxy */;
 		};
 		215D7C571D4279E8001F4C45 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -656,7 +669,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImage;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = RESTAPIImage;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -695,7 +708,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImage;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = RESTAPIImage;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1067,7 +1080,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		213C5EB9215A44DD0039DC20 /* Build configuration list for PBXNativeTarget "RESTAPIImage" */ = {
+		213C5EB9215A44DD0039DC20 /* Build configuration list for PBXNativeTarget "RESTAPIImage iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				213C5EBA215A44DD0039DC20 /* Debug */,
