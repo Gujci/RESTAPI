@@ -15,6 +15,8 @@ The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 github "Gujci/RESTAPI"
 ```
 
+For [Image upload](Image-upload) link  `RESTAPIImage` as well. 
+
 This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so it imports it.
 
 ### Swift 2.2
@@ -166,6 +168,27 @@ oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.fo
     // ... do something
 }
 ```
+
+### Multipart form request
+
+`MultipartFormData` is a protocol, which provides default implementation for  `ValidRequestData`. Implement this protocol to prepare any custom type to be uploaded as multipart form data.
+
+## Image upload
+
+As an optional extension `RESTAPIImage` adds a util implementation for  `MultipartFormData` to upload a simple image. To perform an upload, just instantiate a new `JPGUploadMultipartFormData` instance with `UIImage` and send it as any other request.
+
+`RESTAPIImage` is a sepatate framework, in order to use, add it to Carthage `copy-frameworks` phase and link it.
+
+````swift
+let uploadData = JPGUploadMultipartFormData(image: image, fileName: "image", uploadName: "upfile")
+api.post("/me/profile_picture", data: uploadData) { (err, resp) in 
+    //...
+}
+````
+
+As all methods requre a  `ValidRequestData` to send in body, uploading `JPGUploadMultipartFormData` is not different from any json upload besides composing the `httpBody` of the request. Any utils like authentication can be used, the response parsing is the same.
+
+If the `JPGUploadMultipartFormData` implemetation is not suited for the current usecase, custom implemetnation for `MultipartFormData` can be implemented easily, like described [before](###Multipart-form-request)
 
 ## Authenticating requests
 
