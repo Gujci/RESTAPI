@@ -8,13 +8,13 @@
 
 import RESTAPI
 
-struct JPGUploadMultipartFormData: MultipartFormData {
+public struct JPGUploadMultipartFormData: MultipartFormData {
     
     var image: UIImage
     var fileName: String
     var uploadName: String
     
-    var boundary = String.generatedBoudary
+    public var boundary = String.generatedBoudary
     
     public init(image: UIImage, fileName: String, uploadName: String) {
         self.image = image
@@ -22,12 +22,12 @@ struct JPGUploadMultipartFormData: MultipartFormData {
         self.uploadName = uploadName
     }
     
-    var elements: [MultipartFormDataElement] { return [
+    public var elements: [MultipartFormDataElement] { return [
         MultipartFormDataElement(name: "upfile", data: JPGData(image: image), customParams: ["filename": fileName + ".jpg"])
     ] }
 }
 
-enum JPGUploadError: Error {
+public enum JPGUploadError: Error {
     case cannotRepresentInJPG
 }
 
