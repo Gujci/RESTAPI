@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'RESTAPI'
-  s.version          = '0.3.7'
+  s.version          = '0.9.2'
   s.summary          = 'Lightweight REST API communicator written in Swift, based on Foundation.'
  
   s.description      = <<-DESC
