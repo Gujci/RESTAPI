@@ -36,8 +36,11 @@ github "Gujci/RESTAPI" "== 0.6.1"
 ```
 
 ## CocoaPods
+
+For the latest verion, use
+
 ```
-pod 'RESTAPI'
+`pod 'RESTAPI', :git => 'https://github.com/Gujci/RESTAPI.git'`
 ```
 
 # Examples
