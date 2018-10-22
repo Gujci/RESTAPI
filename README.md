@@ -40,7 +40,7 @@ github "Gujci/RESTAPI" "== 0.6.1"
 For the latest verion, use
 
 ```
-`pod 'RESTAPI', :git => 'https://github.com/Gujci/RESTAPI.git'`
+pod 'RESTAPI', :git => 'https://github.com/Gujci/RESTAPI.git'
 ```
 
 # Examples
