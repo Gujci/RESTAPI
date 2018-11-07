@@ -4,6 +4,41 @@
 //  Created by Gujgiczer Máté on 23/03/16.
 //
 
+extension String {
+    
+    mutating func insert(_ string: Character, before substring: String) {
+        guard let index = self.range(of: substring)?.lowerBound else { return }
+        insert(string, at: index)
+    }
+    
+    mutating func insert(_ string: Character, after substring: String) {
+        guard let index = self.range(of: substring)?.upperBound else { return }
+        insert(string, at: index)
+    }
+}
+
+extension Dictionary: Queryable {
+    
+    public func queryString(forKey key: String) -> [URLQueryItem] {
+        return self.keys.compactMap { dkey in
+            guard let item = self[dkey] else { return nil }
+            if let qItem = item as? Queryable {
+                let result = qItem.queryString(forKey: "\(dkey)")
+                return result.compactMap { it in
+                    var chainedKey = it.name
+                    chainedKey.insert("[", before: "\(dkey)")
+                    chainedKey.insert("]", after: "\(dkey)")
+                    guard let value = it.value else { return nil }
+                    return URLQueryItem(name: "\(key)\(chainedKey)", value: "\(value)")
+                }
+            }
+            else {
+                return [URLQueryItem(name: "\(key)[\(dkey)]", value: "\(item)")]
+            }
+        }.reduce([], +)
+    }
+}
+
 extension Array: Queryable {
     public func queryString(forKey key: String) -> [URLQueryItem] {
         return self.map() { item in
