@@ -54,3 +54,12 @@ extension String: ValidJSONData {
         return self.data(using: String.Encoding.utf8)!
     }
 }
+
+extension ValidJSONData where Self: Encodable {
+    
+    public func JSONFormat() throws -> Data {
+        let encoder = JSONEncoder()
+        return try encoder.encode(self)
+    }
+}
+

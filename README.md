@@ -10,7 +10,9 @@ The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 `PATCH` is added at **0.6.0**, maybe it's not so RESTful, but you have it.
 
 # Installation
+
 ## Carthage
+
 ```
 github "Gujci/RESTAPI"
 ```
@@ -19,7 +21,9 @@ For [Image upload](Image-upload) link  `RESTAPIImage` as well.
 
 This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so it imports it.
 
-### Swift 2.2
+### Older versions
+
+#### Swift 2.2
 
 for Swift 2.2 use the `0.2.2` tag. This version will not be supported.
 
@@ -27,7 +31,7 @@ for Swift 2.2 use the `0.2.2` tag. This version will not be supported.
 github "Gujci/RESTAPI" "== 0.2.2"
 ```
 
-### Swift 3
+#### Swift 3
 
 for Swift 3 use the `0.6.1` tag. This version will not be supported.
 
@@ -80,6 +84,23 @@ struct ExampleResponse: JSONParseable {
 }
 ```
 
+>   `JSONParseable` is a convinience protocol, which inherits from `ValidResponseData`. Custom `ValidResponseData` can also be implemented, and requested. 
+
+### Or by using Codable
+
+By conforming to `Decodable` , the given type automatically conforms to `JSONCodable`, which is `ValidResponseData`.
+
+```swift
+struct ExampleResponse: Codable {
+    var body: String
+    var id: Int?
+    var title: String
+    var userId: Int
+}
+
+extension ExampleResponse: JSONCodable {}
+```
+
 After implementing the response object, you have to set the type of the expected response data in the completion's parameter list like this.
 
 ```swift
@@ -119,7 +140,7 @@ Any custom type can implement `ValidJSONObject`, which requres a function that c
 func JSONFormat() throws -> Data
 ```
 
-### Custom object in body
+### Custom object in body without Codable
 
 If you don't want that much controll and resposibility, you can implement `JSONConvertible`, which has a property named `parameterValue` which can be any `ValidJSONObject`. Practically you just have to convert your type to a `Dictionary` or an other `ValidJSONObject` just it like this:
 
@@ -139,7 +160,26 @@ extension ExampleData: JSONConvertible {
 }
 ```
 
-Additional fields can be added anytime to this property, also, you can exclude any properties. After implementing it, uploading is simple:
+Additional fields can be added anytime to this property, also, you can exclude any properties.
+
+### Custom object in body with Codable
+
+By conforming to `ValidJSONData`, `Encodable` types are automatically parsed to a request json, no manual step needed. 
+
+```swift
+struct ExampleData: Codable {
+    var body: String
+    var id: Int?
+    var title: String
+    var userId: Int
+}
+
+extension ExampleData: ValidJSONData {}
+```
+
+### Upload
+
+To upload, just pass a `ValidRequestData` to the approptiate function's data parameter.
 
 ```swift
 var uploadData = ExampleData(body: "body", id: 1, title: "title", userId: 2)
@@ -171,6 +211,8 @@ oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.fo
     // ... do something
 }
 ```
+
+>   No Codable support for form encoded request yet.
 
 ### Multipart form request
 
@@ -247,7 +289,7 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [x] Carthage support
 - [x] CocoaPods support
 - [x] expand error types to almost full
-- [ ] make JSON and [JSON] comform to JSONParseable to reduce redundant code
+- [x] make JSON and [JSON] comform to JSONParseable to reduce redundant code (Colved by adding ValidResponseData & Conditional Conformance)
 - [ ] Add more unit tests
 - [x] Travis
 - [x] Document form-encoded-support related changes

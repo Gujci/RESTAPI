@@ -46,13 +46,11 @@ class RESTAPITests: XCTestCase {
 
     let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
     
-    func testQuery() {
-        let expectation = self.expectation(description: "querry")
+    func testGetArray() {
+        let expectation = self.expectation(description: "get")
         
-        testServerApi.get("/posts", query: ["userId": "1"]) { (error, posts: [ExamplePostModel]?) in
-            posts?.forEach() { post in
-                XCTAssert(post.userId == 1)
-            }
+        testServerApi.get("/posts") { (error, posts: [ExamplePostModel]?) in
+            XCTAssertNotNil(posts)
             expectation.fulfill()
         }
         
@@ -73,6 +71,10 @@ class RESTAPITests: XCTestCase {
                 return
             }
             
+            XCTAssertEqual(example.body, responsePost?.body)
+            XCTAssertEqual(example.title, responsePost?.title)
+            XCTAssertEqual(example.userId, responsePost?.userId)
+            
             self.testServerApi.patch("/posts/1", data: ["title": "Other title"]) { (error,  responsePost: ExamplePostModel?) in
                 XCTAssertEqual(responsePost?.title, "Other title")
                 expectation.fulfill()
@@ -87,10 +89,28 @@ class RESTAPITests: XCTestCase {
         }
     }
     
+    func testQuery() {
+        let expectation = self.expectation(description: "querry")
+        
+        testServerApi.get("/posts", query: ["userId": "1"]) { (error, posts: [ExamplePostModel]?) in
+            XCTAssertNotNil(posts)
+            posts?.forEach() { post in
+                XCTAssert(post.userId == 1)
+            }
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     func testError() {
         let expectation = self.expectation(description: "error")
         
-        testServerApi.put("/posts/undefined") { (error, posts) in
+        testServerApi.put("/posts/undefined") { (error, posts: JSON?) in
             guard let err = error, err == APIError.notFound else { return }
             expectation.fulfill()
         }
@@ -106,7 +126,8 @@ class RESTAPITests: XCTestCase {
         let expectation = self.expectation(description: "form post")
         let legacyServerApi = API(withBaseUrl: "https://posttestserver.com")
         
-        legacyServerApi.post("/post.php", query: ["dir": "gujci_test"], data: ["key": "value", "body": "any"].formValue){ (error, response) in
+        legacyServerApi.post("/post.php", query: ["dir": "gujci_test"],
+                             data: ["key": "value", "body": "any"].formValue){ (error, response: JSON?) in
             XCTAssertNil(error)
             expectation.fulfill()
         }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2102CA3821923563006222AB /* RESTAPIComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2102CA3721923563006222AB /* RESTAPIComponentTests.swift */; };
 		2102CA392192359D006222AB /* RESTAPIComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2102CA3721923563006222AB /* RESTAPIComponentTests.swift */; };
+		2124F72A21958E19007BD953 /* APIImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124F72921958E19007BD953 /* APIImplementation.swift */; };
 		213C5EA2215A44730039DC20 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EA1215A44730039DC20 /* MultipartFormData.swift */; };
 		213C5EB1215A44DD0039DC20 /* RESTAPIImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213C5EA8215A44DD0039DC20 /* RESTAPIImage.framework */; };
 		213C5EB6215A44DD0039DC20 /* RESTAPIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EB5215A44DD0039DC20 /* RESTAPIImageTests.swift */; };
@@ -17,7 +18,7 @@
 		213C5EC3215A74770039DC20 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		21493A571D427A3B00B5CF8A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 21493A561D427A3B00B5CF8A /* LICENSE */; };
 		21493A631D427E3000B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
-		21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
+		21493A641D427E3000B5CF8A /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* JSONCodable.swift */; };
 		21493A651D427E3000B5CF8A /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* Utils.swift */; };
 		2158E4541E09747C002A957E /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		215D7C4E1D4279E8001F4C45 /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -36,10 +37,12 @@
 		219AEBC21E093773009C939B /* SwiftyJSON.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEBC11E093773009C939B /* SwiftyJSON.framework */; };
 		219AEBC31E09377B009C939B /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
 		219AEBC41E093ABE009C939B /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
-		219AEBC51E093AC1009C939B /* API+JSONParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* API+JSONParseable.swift */; };
+		219AEBC51E093AC1009C939B /* JSONCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A611D427E3000B5CF8A /* JSONCodable.swift */; };
 		219AEBC61E093AC3009C939B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* Utils.swift */; };
 		219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */; };
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
+		21C3AC6B21959CEC004ACB75 /* RESTAPICodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */; };
+		21C3AC6C21959CEC004ACB75 /* RESTAPICodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */; };
 		21EEEE3B1D7EC0E500099A9A /* RESTAPI.framework in Resources */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		21EEEE3E1D7EC3AC00099A9A /* RESTAPI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		21F570AC1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */; };
@@ -102,6 +105,7 @@
 
 /* Begin PBXFileReference section */
 		2102CA3721923563006222AB /* RESTAPIComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPIComponentTests.swift; sourceTree = "<group>"; };
+		2124F72921958E19007BD953 /* APIImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImplementation.swift; sourceTree = "<group>"; };
 		213C5EA1215A44730039DC20 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
 		213C5EA8215A44DD0039DC20 /* RESTAPIImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPIImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		213C5EAA215A44DD0039DC20 /* RESTAPIImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESTAPIImage.h; sourceTree = "<group>"; };
@@ -113,7 +117,7 @@
 		21493A541D427A3700B5CF8A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21493A561D427A3B00B5CF8A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		21493A601D427E3000B5CF8A /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		21493A611D427E3000B5CF8A /* API+JSONParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "API+JSONParseable.swift"; sourceTree = "<group>"; };
+		21493A611D427E3000B5CF8A /* JSONCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONCodable.swift; sourceTree = "<group>"; };
 		21493A621D427E3000B5CF8A /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RESTAPI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		215D7C4D1D4279E8001F4C45 /* RESTAPI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RESTAPI.h; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 		219AEBBB1E09367A009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		219AEBC11E093773009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		21A9B5C11D475D4800D2B57A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPICodable.swift; sourceTree = "<group>"; };
 		21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -191,6 +196,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2124F72C21958E7E007BD953 /* ValidResponseData */ = {
+			isa = PBXGroup;
+			children = (
+				21493A611D427E3000B5CF8A /* JSONCodable.swift */,
+			);
+			path = ValidResponseData;
+			sourceTree = "<group>";
+		};
+		2124F72D21958E87007BD953 /* ValidRequestData */ = {
+			isa = PBXGroup;
+			children = (
+				2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */,
+				2182D6361F13A14000B091CE /* FormEncodable.swift */,
+				213C5EA1215A44730039DC20 /* MultipartFormData.swift */,
+			);
+			path = ValidRequestData;
+			sourceTree = "<group>";
+		};
 		213C5EA9215A44DD0039DC20 /* RESTAPIImage */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,8 +268,9 @@
 			children = (
 				215D7C4D1D4279E8001F4C45 /* RESTAPI.h */,
 				21493A601D427E3000B5CF8A /* API.swift */,
-				21493A611D427E3000B5CF8A /* API+JSONParseable.swift */,
-				2182D63D1F13A5D700B091CE /* ValidRequestData */,
+				2124F72C21958E7E007BD953 /* ValidResponseData */,
+				2124F72D21958E87007BD953 /* ValidRequestData */,
+				2124F72921958E19007BD953 /* APIImplementation.swift */,
 				21493A621D427E3000B5CF8A /* Utils.swift */,
 				21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */,
 			);
@@ -258,19 +282,10 @@
 			children = (
 				215D7C591D4279E8001F4C45 /* RESTAPITests.swift */,
 				2102CA3721923563006222AB /* RESTAPIComponentTests.swift */,
+				21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */,
 				215D7C5B1D4279E8001F4C45 /* Info.plist */,
 			);
 			path = RESTAPITests;
-			sourceTree = "<group>";
-		};
-		2182D63D1F13A5D700B091CE /* ValidRequestData */ = {
-			isa = PBXGroup;
-			children = (
-				2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */,
-				2182D6361F13A14000B091CE /* FormEncodable.swift */,
-				213C5EA1215A44730039DC20 /* MultipartFormData.swift */,
-			);
-			name = ValidRequestData;
 			sourceTree = "<group>";
 		};
 		219AEBAD1E093455009C939B /* Supporting Files */ = {
@@ -579,11 +594,12 @@
 			files = (
 				21F570AC1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */,
 				2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */,
+				2124F72A21958E19007BD953 /* APIImplementation.swift in Sources */,
 				213C5EA2215A44730039DC20 /* MultipartFormData.swift in Sources */,
 				21493A651D427E3000B5CF8A /* Utils.swift in Sources */,
 				21493A631D427E3000B5CF8A /* API.swift in Sources */,
 				2176DDF41D86E3D8005A1B30 /* JSONConvertible.swift in Sources */,
-				21493A641D427E3000B5CF8A /* API+JSONParseable.swift in Sources */,
+				21493A641D427E3000B5CF8A /* JSONCodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,6 +607,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C3AC6B21959CEC004ACB75 /* RESTAPICodable.swift in Sources */,
 				2102CA3821923563006222AB /* RESTAPIComponentTests.swift in Sources */,
 				215D7C5A1D4279E8001F4C45 /* RESTAPITests.swift in Sources */,
 			);
@@ -604,7 +621,7 @@
 				2182D6381F13A14000B091CE /* FormEncodable.swift in Sources */,
 				219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */,
 				219AEBC61E093AC3009C939B /* Utils.swift in Sources */,
-				219AEBC51E093AC1009C939B /* API+JSONParseable.swift in Sources */,
+				219AEBC51E093AC1009C939B /* JSONCodable.swift in Sources */,
 				219AEBC41E093ABE009C939B /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -613,6 +630,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21C3AC6C21959CEC004ACB75 /* RESTAPICodable.swift in Sources */,
 				2102CA392192359D006222AB /* RESTAPIComponentTests.swift in Sources */,
 				219AEBAC1E093404009C939B /* RESTAPITests.swift in Sources */,
 			);
