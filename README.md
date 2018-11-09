@@ -289,7 +289,7 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [x] Carthage support
 - [x] CocoaPods support
 - [x] expand error types to almost full
-- [x] make JSON and [JSON] comform to JSONParseable to reduce redundant code (Colved by adding ValidResponseData & Conditional Conformance)
+- [x] make JSON and [JSON] comform to JSONParseable to reduce redundant code (Solved by adding ValidResponseData & Conditional Conformance)
 - [ ] Add more unit tests
 - [x] Travis
 - [x] Document form-encoded-support related changes
