@@ -8,9 +8,9 @@ import SwiftyJSON
 
 public protocol JSONCodable: ValidResponseData { }
 
-extension JSONCodable where Self: Decodable {
+public extension JSONCodable where Self: Decodable {
     
-    static func createInstance(from data: Data) throws -> Self {
+    public static func createInstance(from data: Data) throws -> Self {
         let decoder = JSONDecoder()
         return try decoder.decode(Self.self, from: data)
     }
