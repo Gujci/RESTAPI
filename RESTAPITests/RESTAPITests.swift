@@ -110,7 +110,7 @@ class RESTAPITests: XCTestCase {
         let expectation = self.expectation(description: "error")
         
         testServerApi.put("/posts/undefined") { (error, posts: JSON?) in
-            guard let err = error, err == APIError.notFound else { return }
+            guard let err = error, err == ResponseStatus.notFound else { return }
             expectation.fulfill()
         }
         

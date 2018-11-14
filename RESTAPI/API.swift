@@ -27,8 +27,13 @@ public protocol ValidRequestData {
 }
 
 /// Possibble response errors
-public enum APIError: Error {
-    case other(Int)
+public enum ResponseStatus: Error {
+    case ok
+    case created
+    case accepted
+    case noContent
+    case resetContent
+    case partialContent
     case multipleChoice
     case badRequest
     case unouthorized
@@ -41,13 +46,23 @@ public enum APIError: Error {
     case serverError
     case notImplemented
     case gatewayTimeout
-    //TODO: - expand
+    case other(Int)
     
-    init?(withResponse response: URLResponse?) {
+    init?(with response: URLResponse?) {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
-            case 200...299:
-                return nil
+            case 200:
+                self = .ok
+            case 201:
+                self = .created
+            case 202:
+                self = .accepted
+            case 204:
+                self = .noContent
+            case 205:
+                self = .resetContent
+            case 206:
+                self = .partialContent
             case 300:
                 self = .multipleChoice
             case 400:
@@ -160,7 +175,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func post<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                           completion: @escaping ((_ error: APIError?, _ object: T?) -> ())) {
+                                           completion: @escaping ((_ status: ResponseStatus?, _ object: T?) -> ())) {
         parseableRequest("POST", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -171,7 +186,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func put<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                          completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
+                                          completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
         parseableRequest("PUT", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -182,7 +197,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func get<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                          completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
+                                          completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
         parseableRequest("GET", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -193,7 +208,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func delete<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                             completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
+                                             completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
         parseableRequest("DELETE", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -204,7 +219,13 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func patch<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                            completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
+                                            completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
         parseableRequest("PATCH", endpoint: endpoint, query: query, data: data, completion: completion)
     }
 }
+
+/// Legacy support
+@available(*, unavailable, renamed: "ResponseStatus")
+public typealias APIError = ResponseStatus
+
+public typealias ValidJSONObject = ValidJSONData

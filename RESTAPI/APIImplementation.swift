@@ -25,18 +25,18 @@ internal extension API {
     
     internal func parseableRequest<T: ValidResponseData>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
                                                          data: ValidRequestData? = nil,
-                                                         completion: @escaping (_ error: APIError?, _ object: T?) -> ()) {
-        dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { err ,data in
-            if let validData = data, err == nil, let responseData = try? T.createInstance(from: validData)  {
-                completion(err, responseData)
+                                                         completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
+        dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { status ,data in
+            if let validData = data  {
+                completion(status, try? T.createInstance(from: validData))
             }
             else {
-                completion(err, nil)
+                completion(status, nil)
             }
         }
     }
     
-    internal func dataTask(_ request: URLRequest, method: String, completion: @escaping (_ error: APIError?, _ object: Data?) -> ()) {
+    internal func dataTask(_ request: URLRequest, method: String, completion: @escaping (_ status: ResponseStatus?, _ object: Data?) -> ()) {
         
         var request = request
         request.httpMethod = method
@@ -55,7 +55,7 @@ internal extension API {
         }
         session.dataTask(with: authentication.authenticateURLRequest(request) as URLRequest,
                          completionHandler: { (data, response, error) -> Void in
-                            if let err = APIError(withResponse: response), ProcessInfo.processInfo.arguments.contains("APIErrorLoggingEnabled") {
+                            if let err = ResponseStatus(with: response), ProcessInfo.processInfo.arguments.contains("APIErrorLoggingEnabled") {
                                 switch (data, (data != nil ? try? JSON(data: data!) : nil)) {
                                 case let (_, json) where json != .null:
                                     print("\(request.url?.absoluteString ?? "Unknown URL") \(err)\n \(json?.description ?? "No JSON")")
@@ -66,10 +66,10 @@ internal extension API {
                                 }
                             }
                             if let validData = data {
-                                completion(APIError(withResponse: response), validData)
+                                completion(ResponseStatus(with: response), validData)
                             }
                             else {
-                                completion(APIError(withResponse: response), nil)
+                                completion(ResponseStatus(with: response), nil)
                             }
                             
         }) .resume()
