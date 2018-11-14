@@ -12,7 +12,7 @@ extension ResponseStatus: Equatable {
         switch (rhs, lhs) {
         case let (.other(code1), .other(code2)):
             return code1 == code2
-        case (.ok, .ok), (.created, .created), (.accepted, .accepted),
+        case (.none, .none), (.ok, .ok), (.created, .created), (.accepted, .accepted),
              (.noContent, .noContent), (.resetContent, .resetContent), (.partialContent, .partialContent),
              (.multipleChoice, .multipleChoice), (.badRequest, .badRequest),
              (.unouthorized, .unouthorized), (.forbidden, .forbidden),

@@ -27,7 +27,7 @@ class RESTAPICodableTests: XCTestCase {
     func testGetArray() {
         let expectation = self.expectation(description: "get")
         
-        testServerApi.get("/posts") { (error, posts: [CodablePostModel]?) in
+        testServerApi.get("/posts") { (status, posts: [CodablePostModel]?) in
             XCTAssertNotNil(posts)
             expectation.fulfill()
         }
@@ -43,7 +43,7 @@ class RESTAPICodableTests: XCTestCase {
         let expectation = self.expectation(description: "post")
         let example = CodablePostModel(body: "Some body", id: nil, title: "🎉 Working", userId: 1)
         
-        testServerApi.post("/posts", data: example) { (error, response: CodablePostModel?) in
+        testServerApi.post("/posts", data: example) { (status, response: CodablePostModel?) in
             XCTAssertEqual(example.body, response?.body)
             XCTAssertEqual(example.title, response?.title)
             XCTAssertEqual(example.userId, response?.userId)

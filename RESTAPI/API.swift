@@ -28,6 +28,7 @@ public protocol ValidRequestData {
 
 /// Possibble response errors
 public enum ResponseStatus: Error {
+    case none
     case ok
     case created
     case accepted
@@ -48,7 +49,7 @@ public enum ResponseStatus: Error {
     case gatewayTimeout
     case other(Int)
     
-    init?(with response: URLResponse?) {
+    init(with response: URLResponse?) {
         if let statusCode = (response as? HTTPURLResponse)?.statusCode {
             switch statusCode {
             case 200:
@@ -95,7 +96,7 @@ public enum ResponseStatus: Error {
             }
         }
         else {
-            return nil
+            self = .none
         }
     }
 }
@@ -175,7 +176,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func post<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                           completion: @escaping ((_ status: ResponseStatus?, _ object: T?) -> ())) {
+                                           completion: @escaping ((_ status: ResponseStatus, _ object: T?) -> ())) {
         parseableRequest("POST", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -186,7 +187,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func put<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                          completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
+                                          completion: @escaping (_ status: ResponseStatus, _ object: T?) -> ()) {
         parseableRequest("PUT", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -197,7 +198,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func get<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                          completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
+                                          completion: @escaping (_ status: ResponseStatus, _ object: T?) -> ()) {
         parseableRequest("GET", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -208,7 +209,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func delete<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                             completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
+                                             completion: @escaping (_ status: ResponseStatus, _ object: T?) -> ()) {
         parseableRequest("DELETE", endpoint: endpoint, query: query, data: data, completion: completion)
     }
     
@@ -219,7 +220,7 @@ open class API {
     ///     - data: HTTP body paramter, must comform to ValidJSONObject protocol. Dictionaries and Arrays are ValidJSONObjects by default.
     ///     - completion: callback on return with error and data paramterst.
     public func patch<T: ValidResponseData>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
-                                            completion: @escaping (_ status: ResponseStatus?, _ object: T?) -> ()) {
+                                            completion: @escaping (_ status: ResponseStatus, _ object: T?) -> ()) {
         parseableRequest("PATCH", endpoint: endpoint, query: query, data: data, completion: completion)
     }
 }

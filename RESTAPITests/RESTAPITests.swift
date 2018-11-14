@@ -48,7 +48,7 @@ class RESTAPITests: XCTestCase {
     func testGetArray() {
         let expectation = self.expectation(description: "get")
         
-        testServerApi.get("/posts") { (error, posts: [ExamplePostModel]?) in
+        testServerApi.get("/posts") { (status, posts: [ExamplePostModel]?) in
             XCTAssertNotNil(posts)
             expectation.fulfill()
         }
@@ -64,7 +64,7 @@ class RESTAPITests: XCTestCase {
         let expectation = self.expectation(description: "post&patch")
         let example = ExamplePostModel(withBody: "something", title: "Some title", userId: 9)
         
-        testServerApi.post("/posts", data: example){ (error, responsePost: ExamplePostModel?) in
+        testServerApi.post("/posts", data: example){ (status, responsePost: ExamplePostModel?) in
             guard let _ = responsePost?.id else {
                 XCTAssert(false)
                 return
@@ -74,7 +74,7 @@ class RESTAPITests: XCTestCase {
             XCTAssertEqual(example.title, responsePost?.title)
             XCTAssertEqual(example.userId, responsePost?.userId)
             
-            self.testServerApi.patch("/posts/1", data: ["title": "Other title"]) { (error,  responsePost: ExamplePostModel?) in
+            self.testServerApi.patch("/posts/1", data: ["title": "Other title"]) { (status,  responsePost: ExamplePostModel?) in
                 XCTAssertEqual(responsePost?.title, "Other title")
                 expectation.fulfill()
             }
@@ -91,7 +91,7 @@ class RESTAPITests: XCTestCase {
     func testQuery() {
         let expectation = self.expectation(description: "querry")
         
-        testServerApi.get("/posts", query: ["userId": "1"]) { (error, posts: [ExamplePostModel]?) in
+        testServerApi.get("/posts", query: ["userId": "1"]) { (status, posts: [ExamplePostModel]?) in
             XCTAssertNotNil(posts)
             posts?.forEach() { post in
                 XCTAssert(post.userId == 1)
@@ -109,8 +109,8 @@ class RESTAPITests: XCTestCase {
     func testError() {
         let expectation = self.expectation(description: "error")
         
-        testServerApi.put("/posts/undefined") { (error, posts: JSON?) in
-            guard let err = error, err == ResponseStatus.notFound else { return }
+        testServerApi.put("/posts/undefined") { (status, posts: JSON?) in
+            guard status == ResponseStatus.notFound else { return }
             expectation.fulfill()
         }
         
@@ -126,8 +126,8 @@ class RESTAPITests: XCTestCase {
         let legacyServerApi = API(withBaseUrl: "https://posttestserver.com")
         
         legacyServerApi.post("/post.php", query: ["dir": "gujci_test"],
-                             data: ["key": "value", "body": "any"].formValue){ (error, response: JSON?) in
-            XCTAssertNil(error)
+                             data: ["key": "value", "body": "any"].formValue){ (status, response: JSON?) in
+            XCTAssertTrue(status.isSuccess || status == .none)
             expectation.fulfill()
         }
         
