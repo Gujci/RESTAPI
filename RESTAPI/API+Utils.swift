@@ -29,7 +29,7 @@ extension ResponseStatus: Equatable {
 
 extension ResponseStatus {
     
-    var isSuccess: Bool {
+    public var isSuccess: Bool {
         switch self {
         case .ok, .created, .accepted, .noContent, .resetContent, .partialContent:
             return true
@@ -40,7 +40,7 @@ extension ResponseStatus {
         }
     }
     
-    var isClientError: Bool {
+    public var isClientError: Bool {
         switch self {
         case .badRequest, .unouthorized, .forbidden, .notFound, .methodNotAllowed,
              .notAcceptable, .requestTimeout, .conflict:
@@ -52,7 +52,7 @@ extension ResponseStatus {
         }
     }
     
-    var isServerError: Bool {
+    public var isServerError: Bool {
         switch self {
         case .notImplemented, .gatewayTimeout, .serverError:
             return true
