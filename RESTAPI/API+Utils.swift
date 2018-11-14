@@ -6,8 +6,6 @@
 //  Copyright © 2017. gujci. All rights reserved.
 //
 
-import Foundation
-
 extension APIError: Equatable {
     
     public static func ==(lhs: APIError, rhs: APIError) -> Bool {

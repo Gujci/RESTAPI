@@ -6,8 +6,6 @@
 //  Copyright © 2016 gujci. All rights reserved.
 //
 
-import SwiftyJSON
-
 /// legacy suppport 
 public typealias ValidJSONObject = ValidJSONData
 

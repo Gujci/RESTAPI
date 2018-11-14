@@ -6,8 +6,6 @@
 //  Copyright © 2017. gujci. All rights reserved.
 //
 
-import Foundation
-
 // MARK: - Form encoding
 public protocol ValidFormData: ValidRequestData {
     func formEncodedValue() throws -> Data

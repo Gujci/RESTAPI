@@ -6,7 +6,8 @@
 //  Copyright © 2016 gujci. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <SwiftyJSON/SwiftyJSON.h>
 
 //! Project version number for RESTAPI.
 FOUNDATION_EXPORT double RESTAPIVersionNumber;

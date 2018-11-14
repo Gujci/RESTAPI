@@ -4,8 +4,6 @@
 //  Created by Gujgiczer Máté on 19/03/16.
 //
 
-import SwiftyJSON
-
 /// Protocol for request quer params
 public protocol Queryable {
     func queryString(forKey key: String) -> [URLQueryItem]
