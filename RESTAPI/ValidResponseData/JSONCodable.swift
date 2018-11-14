@@ -18,7 +18,7 @@ public protocol JSONParseable: JSONCodable {
     init(withJSON data:JSON)
 }
 
-extension JSONParseable {
+public extension JSONParseable {
     
     static func createInstance(from data: Data) throws -> Self {
         let json = try JSON(data: data)

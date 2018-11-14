@@ -50,7 +50,7 @@ extension String: ValidJSONData {
     }
 }
 
-extension ValidJSONData where Self: Encodable {
+public extension ValidJSONData where Self: Encodable {
     
     public func JSONFormat() throws -> Data {
         let encoder = JSONEncoder()
