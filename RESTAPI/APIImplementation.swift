@@ -65,12 +65,7 @@ internal extension API {
                                     print("\(request.url?.absoluteString ?? "Unknown URL") \(err) with no description")
                                 }
                             }
-                            if let validData = data {
-                                completion(ResponseStatus(with: response), validData)
-                            }
-                            else {
-                                completion(ResponseStatus(with: response), nil)
-                            }
+                            completion(ResponseStatus(with: response), data)
                             
         }) .resume()
     }

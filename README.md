@@ -57,7 +57,7 @@ By default you can perform a single request which returns a simple JSON response
 
 ```swift
 let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
-testServerApi.get("/posts") { (error, data) in
+testServerApi.get("/posts") { (status, data) in
     //This data will be SwiftyJSON's Optional JSON type by default (data: JSON?)
 }
 ```
@@ -104,7 +104,7 @@ extension ExampleResponse: JSONCodable {}
 After implementing the response object, you have to set the type of the expected response data in the completion's parameter list like this.
 
 ```swift
-testServerApi.get("/posts") { (error, data: [ExampleResponse]?) in
+testServerApi.get("/posts") { (status, data: [ExampleResponse]?) in
     //This a swift array now, filled with ExampleResponse instances
 }
 ```
@@ -116,7 +116,7 @@ In this case an array was expected as response, but simple types will work as we
 Querying is simple like this:
 
 ```swift
-testServerApi.get("/posts", query: ["userId" : "1"]) { (error, object: [ExampleResponse]?) in
+testServerApi.get("/posts", query: ["userId" : "1"]) { (status, object: [ExampleResponse]?) in
     //...
 }
 ```
@@ -128,7 +128,7 @@ Values in the query parameter dictionary must implement the `Queryable` protocol
 ### Simple body
 
 ```swift
-testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some title", "userId": 9]) { (error, object) in
+testServerApi.post("/posts", data: ["body": "something","id": 1, "title": "Some title", "userId": 9]) { (status, object) in
     //...
 }
 ```
@@ -184,7 +184,7 @@ To upload, just pass a `ValidRequestData` to the approptiate function's data par
 ```swift
 var uploadData = ExampleData(body: "body", id: 1, title: "title", userId: 2)
 
-testServerApi.post("/posts", data: uploadData) { (error, object) in
+testServerApi.post("/posts", data: uploadData) { (status, object) in
     //...
 }
 ```
@@ -207,7 +207,7 @@ var parameters: [String: String] {
 }
 
 // ...
-oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.formValue){ (error, response) in
+oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.formValue){ (status, response) in
     // ... do something
 }
 ```
@@ -226,7 +226,7 @@ As an optional extension `RESTAPIImage` adds a util implementation for  `Multipa
 
 ````swift
 let uploadData = JPGUploadMultipartFormData(image: image, fileName: "image", uploadName: "upfile")
-api.post("/me/profile_picture", data: uploadData) { (err, resp) in 
+api.post("/me/profile_picture", data: uploadData) { (status, resp) in 
     //...
 }
 ````
@@ -288,7 +288,7 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [x] Document the authentication
 - [x] Carthage support
 - [x] CocoaPods support
-- [x] expand error types to almost full
+- [x] expand status types to almost full
 - [x] make JSON and [JSON] comform to JSONParseable to reduce redundant code (Solved by adding ValidResponseData & Conditional Conformance)
 - [ ] Add more unit tests
 - [x] Travis
