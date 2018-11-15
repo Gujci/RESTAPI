@@ -15,14 +15,14 @@ public extension JSONCodable where Self: Decodable {
 }
 
 public protocol JSONParseable: JSONCodable {
-    init(withJSON data:JSON)
+    init(withJSON data:JSON) throws
 }
 
 public extension JSONParseable {
     
     static func createInstance(from data: Data) throws -> Self {
         let json = try JSON(data: data)
-        return Self.init(withJSON: json)
+        return try Self.init(withJSON: json)
     }
 }
 
