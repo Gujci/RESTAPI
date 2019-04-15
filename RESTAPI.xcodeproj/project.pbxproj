@@ -27,6 +27,7 @@
 		2176DDF41D86E3D8005A1B30 /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */; };
 		2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182D6361F13A14000B091CE /* FormEncodable.swift */; };
 		2182D6381F13A14000B091CE /* FormEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2182D6361F13A14000B091CE /* FormEncodable.swift */; };
+		2188F96E2265314E00B40E3D /* UtilTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ABC93E2264BBDC004ED369 /* UtilTypes.swift */; };
 		219AEB9E1E0933F2009C939B /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEB951E0933F2009C939B /* RESTAPI.framework */; };
 		219AEBAC1E093404009C939B /* RESTAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D7C591D4279E8001F4C45 /* RESTAPITests.swift */; };
 		219AEBB21E093573009C939B /* RESTAPI.h in Headers */ = {isa = PBXBuildFile; fileRef = 215D7C4D1D4279E8001F4C45 /* RESTAPI.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -627,6 +628,7 @@
 				21F570AD1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */,
 				2182D6381F13A14000B091CE /* FormEncodable.swift in Sources */,
 				21C3AC6E2195B1D8004ACB75 /* APIImplementation.swift in Sources */,
+				2188F96E2265314E00B40E3D /* UtilTypes.swift in Sources */,
 				21C3AC6D2195B1D4004ACB75 /* MultipartFormData.swift in Sources */,
 				219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */,
 				219AEBC61E093AC3009C939B /* Utils.swift in Sources */,
