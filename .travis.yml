@@ -34,5 +34,5 @@ deploy:
 notifications:
   slack:
     rooms:
-- gujci: ${SLACK_WORKSPACE}#restapi
+      - gujci: "${SLACK_WORKSPACE}#restapi"
   email: false
