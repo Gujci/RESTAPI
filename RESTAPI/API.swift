@@ -226,7 +226,4 @@ open class API {
 }
 
 /// Legacy support
-@available(*, unavailable, renamed: "ResponseStatus")
-public typealias APIError = ResponseStatus
-
 public typealias ValidJSONObject = ValidJSONData

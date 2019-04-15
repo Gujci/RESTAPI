@@ -141,7 +141,7 @@ class RESTAPITests: XCTestCase {
     func testGetArrayResponse() {
         let expectation = self.expectation(description: "get")
         
-        testServerApi.get("/posts") { (status, response: Response<[ExamplePostModel], APIEror>?) in
+        testServerApi.get("/posts") { (status, response: Response<[ExamplePostModel], APIError>?) in
             XCTAssertNotNil(response?.data)
             XCTAssertNil(response?.error)
             expectation.fulfill()

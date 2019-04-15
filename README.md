@@ -281,12 +281,12 @@ One type must not implement this protocol twice or more, meaning it is not suppo
 A response wrapper is provided in the frameworj for all  `ValidResponseData` in order to parse both the success and a possible error response. However, using the same structure, you can implement any other type of generic response to match your needs. An example cann with the built in one looks like the following:
 
 ```swift
-testServerApi.get("/endpoint") { (status, response: Response<ExampleResponse, APIEror>?) in
+testServerApi.get("/endpoint") { (status, response: Response<ExampleResponse, APIError>?) in
     //...
 }
 ```
 
-Where `APIEror` is an other custom `ValidResponseData` type, but `JSON` is accepted as well (since it also conforms to `ValidResponseData`). Note, that array of `ValidResponseData` also conforms to `ValidResponseData`.
+Where `APIError` is an other custom `ValidResponseData` type, but `JSON` is accepted as well (since it also conforms to `ValidResponseData`). Note, that array of `ValidResponseData` also conforms to `ValidResponseData`.
 
 # Debugging
 
