@@ -8,7 +8,7 @@ public protocol JSONCodable: ValidResponseData { }
 
 public extension JSONCodable where Self: Decodable {
     
-    public static func createInstance(from data: Data) throws -> Self {
+    static func createInstance(from data: Data) throws -> Self {
         let decoder = JSONDecoder()
         return try decoder.decode(Self.self, from: data)
     }

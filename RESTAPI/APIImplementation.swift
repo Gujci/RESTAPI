@@ -23,7 +23,7 @@ fileprivate extension ContentType {
 
 internal extension API {
     
-    internal func parseableRequest<T: ValidResponseData>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
+    func parseableRequest<T: ValidResponseData>(_ method: String, endpoint: String, query: [String: Queryable]? = nil,
                                                          data: ValidRequestData? = nil,
                                                          completion: @escaping (_ status: ResponseStatus, _ object: T?) -> ()) {
         dataTask(clientURLRequest(endpoint, query: query, params: data), method: method) { status ,data in
@@ -36,7 +36,7 @@ internal extension API {
         }
     }
     
-    internal func dataTask(_ request: URLRequest, method: String, completion: @escaping (_ status: ResponseStatus, _ object: Data?) -> ()) {
+    func dataTask(_ request: URLRequest, method: String, completion: @escaping (_ status: ResponseStatus, _ object: Data?) -> ()) {
         
         var request = request
         request.httpMethod = method
@@ -71,7 +71,7 @@ internal extension API {
         }) .resume()
     }
     
-    internal func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidRequestData?)
+    func clientURLRequest(_ path: String, query: [String: Queryable]?, params: ValidRequestData?)
         -> URLRequest {
             var request = URLRequest(url: URL(string: baseURL + path, query: query))
             if let params = params, let httpData = try? params.requestData() {

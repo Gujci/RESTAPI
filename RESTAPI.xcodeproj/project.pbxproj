@@ -41,6 +41,7 @@
 		219AEBC61E093AC3009C939B /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A621D427E3000B5CF8A /* Utils.swift */; };
 		219AEBC71E093AC7009C939B /* JSONConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2176DDF31D86E3D8005A1B30 /* JSONConvertible.swift */; };
 		21A9B5C21D475D4800D2B57A /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 21A9B5C11D475D4800D2B57A /* Cartfile */; };
+		21ABC93F2264BBDC004ED369 /* UtilTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21ABC93E2264BBDC004ED369 /* UtilTypes.swift */; };
 		21C3AC6B21959CEC004ACB75 /* RESTAPICodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */; };
 		21C3AC6C21959CEC004ACB75 /* RESTAPICodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */; };
 		21C3AC6D2195B1D4004ACB75 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EA1215A44730039DC20 /* MultipartFormData.swift */; };
@@ -140,6 +141,7 @@
 		219AEBBB1E09367A009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		219AEBC11E093773009C939B /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/tvOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		21A9B5C11D475D4800D2B57A /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		21ABC93E2264BBDC004ED369 /* UtilTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilTypes.swift; sourceTree = "<group>"; };
 		21C3AC6921959CBD004ACB75 /* RESTAPICodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPICodable.swift; sourceTree = "<group>"; };
 		21F570AB1FAF0ACE00E8BFDB /* API+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Utils.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				21493A611D427E3000B5CF8A /* JSONCodable.swift */,
+				21ABC93E2264BBDC004ED369 /* UtilTypes.swift */,
 			);
 			path = ValidResponseData;
 			sourceTree = "<group>";
@@ -469,7 +472,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1000;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = gujci;
 				TargetAttributes = {
 					213C5EA7215A44DD0039DC20 = {
@@ -503,10 +506,11 @@
 			};
 			buildConfigurationList = 215D7C441D4279E8001F4C45 /* Build configuration list for PBXProject "RESTAPI" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 215D7C401D4279E8001F4C45;
 			productRefGroup = 215D7C4B1D4279E8001F4C45 /* Products */;
@@ -597,6 +601,7 @@
 				21F570AC1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */,
 				2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */,
 				2124F72A21958E19007BD953 /* APIImplementation.swift in Sources */,
+				21ABC93F2264BBDC004ED369 /* UtilTypes.swift in Sources */,
 				213C5EA2215A44730039DC20 /* MultipartFormData.swift in Sources */,
 				21493A651D427E3000B5CF8A /* Utils.swift in Sources */,
 				21493A631D427E3000B5CF8A /* API.swift in Sources */,
@@ -702,7 +707,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -740,7 +745,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImage;
 				PRODUCT_NAME = RESTAPIImage;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -773,7 +778,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -804,7 +809,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -813,6 +818,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -862,6 +868,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -872,6 +879,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -914,6 +922,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -944,7 +953,7 @@
 				PRODUCT_NAME = RESTAPI;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -971,7 +980,7 @@
 				PRODUCT_NAME = RESTAPI;
 				SKIP_INSTALL = YES;
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -990,7 +999,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -1009,7 +1018,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1036,7 +1045,7 @@
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1064,7 +1073,7 @@
 				PRODUCT_NAME = RESTAPI;
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
@@ -1086,7 +1095,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
@@ -1106,7 +1115,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.gujci.RESTAPI-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;

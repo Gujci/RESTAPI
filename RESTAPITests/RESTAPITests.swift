@@ -110,7 +110,7 @@ class RESTAPITests: XCTestCase {
         let expectation = self.expectation(description: "error")
         
         testServerApi.put("/posts/undefined") { (status, posts: JSON?) in
-            guard status == ResponseStatus.notFound else { return }
+            XCTAssertEqual(status, ResponseStatus.serverError)
             expectation.fulfill()
         }
         
@@ -132,6 +132,22 @@ class RESTAPITests: XCTestCase {
         }
         
         waitForExpectations(timeout: 15) { error in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    func testGetArrayResponse() {
+        let expectation = self.expectation(description: "get")
+        
+        testServerApi.get("/posts") { (status, response: Response<[ExamplePostModel], APIEror>?) in
+            XCTAssertNotNil(response?.data)
+            XCTAssertNil(response?.error)
+            expectation.fulfill()
+        }
+        
+        waitForExpectations(timeout: 10) { error in
             if let error = error {
                 print("Error: \(error.localizedDescription)")
             }

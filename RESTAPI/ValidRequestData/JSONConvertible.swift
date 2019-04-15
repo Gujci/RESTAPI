@@ -52,7 +52,7 @@ extension String: ValidJSONData {
 
 public extension ValidJSONData where Self: Encodable {
     
-    public func JSONFormat() throws -> Data {
+    func JSONFormat() throws -> Data {
         let encoder = JSONEncoder()
         return try encoder.encode(self)
     }
