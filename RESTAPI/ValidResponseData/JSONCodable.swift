@@ -26,6 +26,11 @@ public extension JSONParseable {
     }
 }
 
+extension Data: ValidResponseData {
+    
+    public static func createInstance(from data: Data) throws -> Data { return data }
+}
+
 extension JSON: JSONCodable {
     
     public static func createInstance(from data: Data) throws -> JSON {

@@ -17,7 +17,7 @@ public struct Response<DataType: ValidResponseData, ErrorType: ValidResponseData
 }
 
 
-public struct APIError: JSONParseable {
+public struct APIError: JSONParseable, Error {
     
     public var message: String
     

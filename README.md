@@ -278,7 +278,7 @@ One type must not implement this protocol twice or more, meaning it is not suppo
 
 ## Response
 
-A response wrapper is provided in the frameworj for all  `ValidResponseData` in order to parse both the success and a possible error response. However, using the same structure, you can implement any other type of generic response to match your needs. An example cann with the built in one looks like the following:
+A response wrapper is provided in the framework for all  `ValidResponseData` in order to parse both the success and a possible error response. However, using the same structure, you can implement any other type of generic response to match your needs. An example call with the built in one looks like the following:
 
 ```swift
 testServerApi.get("/endpoint") { (status, response: Response<ExampleResponse, APIError>?) in
@@ -287,6 +287,55 @@ testServerApi.get("/endpoint") { (status, response: Response<ExampleResponse, AP
 ```
 
 Where `APIError` is an other custom `ValidResponseData` type, but `JSON` is accepted as well (since it also conforms to `ValidResponseData`). Note, that array of `ValidResponseData` also conforms to `ValidResponseData`.
+
+## Result
+
+>  This section is about one possibble implementation to support `Result` as a callback type. These are just to suggestions to implement your own. I just put this feature on the roadmap, so hopefully, full support will be coming soon. Also keeping an eye on [async/await proposals](https://forums.swift.org/search?q=await).
+
+Since swift 5 you may use the `Result` type as a built in solution to wrap data and error together. You may write an extension like this to be able to use the type, but it would not represent the network error only the one which may occure while parsing the response.
+
+```swift
+extension Result: ValidResponseData where Success: ValidResponseData {
+
+    public static func createInstance(from data: Data) throws -> Result<Success, Failure> {
+        do {
+            return .success(try Success.createInstance(from: data))
+        }
+        catch let e as Failure {
+            return .failure(e)
+        }
+    }
+}
+```
+
+To make full advantage of the type the whole callback should have one `Result`  parameter.  Like the following, where `SomeResultType` can be any compatible type. Also, you may write your own `SomeErrorType` or just use `APIError`.
+
+```swift
+testServerApi.get("/posts") { (data: Result<SomeResultType, SomeErrorType>) in
+    // ...
+}
+```
+
+To be able to call this, you have to write a wrapper for the original function.
+
+```swift
+extension API {
+
+    public func get<T: ValidResponseData, E: Error>(_ endpoint: String, query: [String: Queryable]? = nil, data: ValidRequestData? = nil,
+        completion: @escaping (Result<T, E>) -> ()) {
+            get(endpoint, query: query, data: data) { (status, response: Data?) in
+                // parse status & response to Result
+                if status.isSuccess,
+                    let response = response,
+                    let result = try? T.createInstance(from: response) {
+                        completion(.success(result))
+                    } else {
+                        // ... custom error parsing
+                    }
+                }
+        }
+}
+```
 
 # Debugging
 
@@ -305,3 +354,4 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [ ] Add more unit tests
 - [x] Travis
 - [x] Document form-encoded-support related changes
+- [ ] full support `Result` type
