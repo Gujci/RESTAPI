@@ -4,7 +4,7 @@ import PackageDescription
 let package = Package(
     name: "RESTAPI",
     products: [
-        .library(name: "RESTAPI", targets: ["RESTAPI"]),
+        .library(name: "RESTAPI", targets: [.target(name: "RESTAPI",path: ".")]),
     ],
     dependencies: [
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", from: "5.0.0")
