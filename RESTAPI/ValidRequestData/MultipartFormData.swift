@@ -6,6 +6,8 @@
 //  Copyright © 2018. gujci. All rights reserved.
 //
 
+import Foundation
+
 public extension String {
     
     static var generatedBoudary: String { return "boundary-\(UUID().uuidString)" }

@@ -6,6 +6,9 @@
 //  Copyright © 2016 gujci. All rights reserved.
 //
 
+import Foundation
+import SwiftyJSON
+
 // MARK: - JSON encoding
 /// Protocol for objects that can be converted to JSONs for HTTP body parameters
 public protocol ValidJSONData: ValidRequestData {

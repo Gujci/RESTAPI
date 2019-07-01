@@ -6,6 +6,9 @@
 //  Copyright © 2018. gujci. All rights reserved.
 //
 
+import Foundation
+import SwiftyJSON
+
 //MARK: - Private part
 fileprivate extension ContentType {
     

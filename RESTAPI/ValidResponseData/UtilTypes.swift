@@ -5,6 +5,8 @@
 //  Created by Gujgiczer Máté on 2019. 04. 15..
 //  Copyright © 2019. gujci. All rights reserved.
 //
+import Foundation
+import SwiftyJSON
 
 public struct Response<DataType: ValidResponseData, ErrorType: ValidResponseData>: ValidResponseData {
     public var data: DataType?

@@ -4,6 +4,9 @@
 //  Created by Gujgiczer Máté on 23/03/16.
 //
 
+import Foundation
+import SwiftyJSON
+
 public protocol JSONCodable: ValidResponseData { }
 
 public extension JSONCodable where Self: Decodable {
