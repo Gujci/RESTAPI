@@ -10,7 +10,7 @@ let package = Package(
         .package(url: "https://github.com/SwiftyJSON/SwiftyJSON.git", from: "5.0.0")
     ],
     targets: [
-        .target(name: "RESTAPI", dependencies: ["SwiftyJSON"], path: "./RESTAPI"),
-        .testTarget(name: "RESTAPITests", dependencies: ["RESTAPI"], path: "./RESTAPITests"),
+        .target(name: "RESTAPI", dependencies: ["SwiftyJSON"], path: "RESTAPI"),
+        .testTarget(name: "RESTAPITests", dependencies: ["RESTAPI"], path: "RESTAPITests"),
     ]
 )
