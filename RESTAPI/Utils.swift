@@ -4,6 +4,8 @@
 //  Created by Gujgiczer Máté on 23/03/16.
 //
 
+import Foundation
+
 extension String {
     
     mutating func insert(_ string: Character, before substring: String) {
