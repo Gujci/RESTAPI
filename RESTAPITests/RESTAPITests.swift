@@ -6,6 +6,7 @@
 //  Copyright © 2016 gujci. All rights reserved.
 //
 
+#if !os(watchOS)
 import XCTest
 import SwiftyJSON
 @testable import RESTAPI
@@ -155,3 +156,4 @@ class RESTAPITests: XCTestCase {
         }
     }
 }
+#endif

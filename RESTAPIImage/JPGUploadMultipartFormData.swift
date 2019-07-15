@@ -7,6 +7,8 @@
 //
 
 import RESTAPI
+#if canImport(UIKit)
+import UIKit
 
 public struct JPGUploadMultipartFormData: MultipartFormData {
     
@@ -45,3 +47,4 @@ extension JPGData: ValidRequestData {
         return data
     }
 }
+#endif

@@ -6,6 +6,7 @@
 //  Copyright © 2018. gujci. All rights reserved.
 //
 
+#if !os(watchOS) && !os(macOS)
 import XCTest
 @testable import RESTAPIImage
 
@@ -20,3 +21,4 @@ class RESTAPIImageTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 }
+#endif

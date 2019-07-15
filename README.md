@@ -11,13 +11,23 @@ The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 
 # Installation
 
+## Swift Package Manager
+
+```swift
+.package(url: "https://github.com/Gujci/RESTAPI.git")
+```
+
+In dependenciec add `RESTAPI` or `RESTAPIImage` as well for [Image upload](Image-upload) & other image related extensions.
+
 ## Carthage
 
 ```
 github "Gujci/RESTAPI"
 ```
 
-For [Image upload](Image-upload) link  `RESTAPIImage` as well. 
+Carthage dropped support for multiple frameworks / repo, so it has to be compiled on device to be able to use both `RESTAPI` and `RESTAPIImage` for [Image upload](Image-upload). 
+
+`RESTAPIImage` is a sepatate framework, in order to use, add it to Carthage `copy-frameworks` phase and link it.
 
 This framework highly relies on [SwiftyJSON] (https://github.com/SwiftyJSON/SwiftyJSON), so it imports it.
 
@@ -218,11 +228,33 @@ oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.fo
 
 `MultipartFormData` is a protocol, which provides default implementation for  `ValidRequestData`. Implement this protocol to prepare any custom type to be uploaded as multipart form data.
 
-## Image upload
+### Cacheable
 
-As an optional extension `RESTAPIImage` adds a util implementation for  `MultipartFormData` to upload a simple image. To perform an upload, just instantiate a new `JPGUploadMultipartFormData` instance with `UIImage` and send it as any other request.
+`Cacheable` is a protocol, which can be used with the `load()` function of `API`.  This enables responses (eq. images) to be cached on device. The implementation is up to the developer, on order the conform to `Cacheable` a type must implement the following methods.
 
-`RESTAPIImage` is a sepatate framework, in order to use, add it to Carthage `copy-frameworks` phase and link it.
+```swift
+static func getPersistantData(for url: String) throws -> Self?
+
+func savePersistant(for url: String) throws
+```
+
+>   Since the only key for cache is the URL string itself, this mechanism is better for binaries like images and data, where the URL is also an identifier for a resource.
+
+## Images
+
+There is a separate target called `RESTAPIImage`, which contains upload and cached download implementations to supported protocols ( `Cacheable`, `MultipartFormData` ) for `UIImage`.
+
+It also contains an extension for `UIImageView` to just pass an URL to it to set up the image:
+
+````swift
+func setup(from imageUrl: String?)
+````
+
+>   UIImage extensions only work in environments, where UIKit is available.
+
+### Image upload
+
+ `RESTAPIImage` adds a util implementation for  `MultipartFormData` to upload a simple image. To perform an upload, just instantiate a new `JPGUploadMultipartFormData` instance with `UIImage` and send it as any other request.
 
 ````swift
 let uploadData = JPGUploadMultipartFormData(image: image, fileName: "image", uploadName: "upfile")
@@ -272,9 +304,7 @@ public protocol ValidRequestData {
 }
 ```
 
-### Disclaimer
-
-One type must not implement this protocol twice or more, meaning it is not supported to conform to both `ValidFormData` and `JSONConvertible`.
+>   One type must not implement this protocol twice or more, meaning it is not supported to conform to both `ValidFormData` and `JSONConvertible`.
 
 ## Response
 
@@ -349,9 +379,9 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [x] Document the authentication
 - [x] Carthage support
 - [x] CocoaPods support
-- [x] expand status types to almost full
-- [x] make JSON and [JSON] comform to JSONParseable to reduce redundant code (Solved by adding ValidResponseData & Conditional Conformance)
-- [ ] Add more unit tests
+- [x] SPM support
+- [x] Expand status types to almost full
+- [x] Make JSON and [JSON] comform to JSONParseable to reduce redundant code (Solved by adding ValidResponseData & Conditional Conformance)
 - [x] Travis
 - [x] Document form-encoded-support related changes
-- [ ] full support `Result` type
+- [  ] Full support for some `Result` type 
