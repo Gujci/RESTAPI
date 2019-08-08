@@ -41,7 +41,7 @@ public extension MultipartFormData {
             data.append(string: "Content-Disposition: form-data; name=\"\(element.name)\"")
             element.customParams?.forEach { data.append(string: "; \($0)=\"\($1)\"") }
             data.append(string: "\r\n")
-            data.append(string: "Content-Type: \(element.data.type())\r\n")
+            data.append(string: "Content-Type: \(element.data.type().headerValue)\r\n")
             data.append(string: "\r\n")
             data.append(try element.data.requestData())
             data.append(string: "\r\n")

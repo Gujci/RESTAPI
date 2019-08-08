@@ -10,7 +10,7 @@ import Foundation
 import SwiftyJSON
 
 //MARK: - Private part
-fileprivate extension ContentType {
+internal extension ContentType {
     
     var headerValue: String {
         switch self {
