@@ -7,13 +7,24 @@
 import Foundation
 import SwiftyJSON
 
+public struct JSONDecoderStore {
+    
+    private static var storage: [String: JSONDecoder] = [:]
+    
+    public static let defaultDecoder = JSONDecoder()
+    
+    public static subscript(_ type: JSONCodable.Type) -> JSONDecoder {
+        get { storage[String(describing: type)] ?? defaultDecoder }
+        set { storage[String(describing: type)] = newValue}
+    }
+}
+
 public protocol JSONCodable: ValidResponseData { }
 
 public extension JSONCodable where Self: Decodable {
     
     static func createInstance(from data: Data) throws -> Self {
-        let decoder = JSONDecoder()
-        return try decoder.decode(Self.self, from: data)
+        return try JSONDecoderStore[Self].decode(Self.self, from: data)
     }
 }
 
