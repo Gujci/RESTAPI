@@ -9,10 +9,18 @@ import RESTAPI
 #if canImport(UIKit)
 import UIKit
 
+// MARK: - Error type
+public enum UIImageInitializeError: Error {
+    case failed
+}
+
 // MARK: - UIImage conformance
 extension UIImage: ValidResponseData {
     
-    public static func createInstance(from data: Data) throws -> Self { return UIImage(data: data)! as! Self }
+    public static func createInstance(from data: Data) throws -> Self {
+        guard let image = UIImage(data: data) as? Self else { throw UIImageInitializeError.failed }
+        return image
+    }
 }
 
 extension UIImage: Cachable {
