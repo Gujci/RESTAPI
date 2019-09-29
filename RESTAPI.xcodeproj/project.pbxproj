@@ -14,7 +14,6 @@
 		213C5EB1215A44DD0039DC20 /* RESTAPIImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 213C5EA8215A44DD0039DC20 /* RESTAPIImage.framework */; };
 		213C5EB6215A44DD0039DC20 /* RESTAPIImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EB5215A44DD0039DC20 /* RESTAPIImageTests.swift */; };
 		213C5EB8215A44DD0039DC20 /* RESTAPIImage.h in Headers */ = {isa = PBXBuildFile; fileRef = 213C5EAA215A44DD0039DC20 /* RESTAPIImage.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		213C5EC2215A450B0039DC20 /* API+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 213C5EC1215A450B0039DC20 /* API+Image.swift */; };
 		213C5EC3215A74770039DC20 /* RESTAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 215D7C4A1D4279E8001F4C45 /* RESTAPI.framework */; };
 		21493A571D427A3B00B5CF8A /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 21493A561D427A3B00B5CF8A /* LICENSE */; };
 		21493A631D427E3000B5CF8A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21493A601D427E3000B5CF8A /* API.swift */; };
@@ -117,7 +116,6 @@
 		213C5EB0215A44DD0039DC20 /* RESTAPIImageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RESTAPIImageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		213C5EB5215A44DD0039DC20 /* RESTAPIImageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPIImageTests.swift; sourceTree = "<group>"; };
 		213C5EB7215A44DD0039DC20 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		213C5EC1215A450B0039DC20 /* API+Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Image.swift"; sourceTree = "<group>"; };
 		21493A541D427A3700B5CF8A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		21493A561D427A3B00B5CF8A /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		21493A601D427E3000B5CF8A /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -225,7 +223,6 @@
 			children = (
 				213C5EAA215A44DD0039DC20 /* RESTAPIImage.h */,
 				213C5EAB215A44DD0039DC20 /* Info.plist */,
-				213C5EC1215A450B0039DC20 /* API+Image.swift */,
 			);
 			path = RESTAPIImage;
 			sourceTree = "<group>";
@@ -583,7 +580,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				213C5EC2215A450B0039DC20 /* API+Image.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -755,7 +751,6 @@
 		213C5EBD215A44DD0039DC20 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -788,7 +783,6 @@
 		213C5EBE215A44DD0039DC20 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
