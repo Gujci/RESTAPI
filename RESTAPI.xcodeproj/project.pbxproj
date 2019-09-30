@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1853FD6623425BCD00F18EEC /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 219AEBBB1E09367A009C939B /* SwiftyJSON.framework */; };
+		1853FD6723425BDD00F18EEC /* RESTAPIImage.framework in Resources */ = {isa = PBXBuildFile; fileRef = 213C5EA8215A44DD0039DC20 /* RESTAPIImage.framework */; };
+		1853FD6923425C1700F18EEC /* RESTAPIImage.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 213C5EA8215A44DD0039DC20 /* RESTAPIImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		1853FD6C23425D1900F18EEC /* JPGUploadMultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853FD6A23425D1900F18EEC /* JPGUploadMultipartFormData.swift */; };
+		1853FD6D23425D1900F18EEC /* UIImage+Cachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853FD6B23425D1900F18EEC /* UIImage+Cachable.swift */; };
+		1853FD6F23425D3B00F18EEC /* Cacheable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1853FD6E23425D3B00F18EEC /* Cacheable.swift */; };
 		2102CA3821923563006222AB /* RESTAPIComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2102CA3721923563006222AB /* RESTAPIComponentTests.swift */; };
 		2102CA392192359D006222AB /* RESTAPIComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2102CA3721923563006222AB /* RESTAPIComponentTests.swift */; };
 		2124F72A21958E19007BD953 /* APIImplementation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2124F72921958E19007BD953 /* APIImplementation.swift */; };
@@ -84,6 +90,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		1853FD6823425C0D00F18EEC /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				1853FD6923425C1700F18EEC /* RESTAPIImage.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		2158E4531E097470002A957E /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -107,6 +123,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1853FD6A23425D1900F18EEC /* JPGUploadMultipartFormData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JPGUploadMultipartFormData.swift; sourceTree = "<group>"; };
+		1853FD6B23425D1900F18EEC /* UIImage+Cachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Cachable.swift"; sourceTree = "<group>"; };
+		1853FD6E23425D3B00F18EEC /* Cacheable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cacheable.swift; sourceTree = "<group>"; };
 		2102CA3721923563006222AB /* RESTAPIComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RESTAPIComponentTests.swift; sourceTree = "<group>"; };
 		2124F72921958E19007BD953 /* APIImplementation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImplementation.swift; sourceTree = "<group>"; };
 		213C5EA1215A44730039DC20 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
@@ -158,6 +177,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1853FD6623425BCD00F18EEC /* SwiftyJSON.framework in Frameworks */,
 				213C5EB1215A44DD0039DC20 /* RESTAPIImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,6 +241,8 @@
 		213C5EA9215A44DD0039DC20 /* RESTAPIImage */ = {
 			isa = PBXGroup;
 			children = (
+				1853FD6A23425D1900F18EEC /* JPGUploadMultipartFormData.swift */,
+				1853FD6B23425D1900F18EEC /* UIImage+Cachable.swift */,
 				213C5EAA215A44DD0039DC20 /* RESTAPIImage.h */,
 				213C5EAB215A44DD0039DC20 /* Info.plist */,
 			);
@@ -269,6 +291,7 @@
 		215D7C4C1D4279E8001F4C45 /* RESTAPI */ = {
 			isa = PBXGroup;
 			children = (
+				1853FD6E23425D3B00F18EEC /* Cacheable.swift */,
 				215D7C4D1D4279E8001F4C45 /* RESTAPI.h */,
 				21493A601D427E3000B5CF8A /* API.swift */,
 				2124F72C21958E7E007BD953 /* ValidResponseData */,
@@ -378,6 +401,7 @@
 				213C5EAC215A44DD0039DC20 /* Sources */,
 				213C5EAD215A44DD0039DC20 /* Frameworks */,
 				213C5EAE215A44DD0039DC20 /* Resources */,
+				1853FD6823425C0D00F18EEC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -537,6 +561,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1853FD6723425BDD00F18EEC /* RESTAPIImage.framework in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,8 +622,11 @@
 			files = (
 				21F570AC1FAF0ACE00E8BFDB /* API+Utils.swift in Sources */,
 				2182D6371F13A14000B091CE /* FormEncodable.swift in Sources */,
+				1853FD6F23425D3B00F18EEC /* Cacheable.swift in Sources */,
 				2124F72A21958E19007BD953 /* APIImplementation.swift in Sources */,
 				21ABC93F2264BBDC004ED369 /* UtilTypes.swift in Sources */,
+				1853FD6C23425D1900F18EEC /* JPGUploadMultipartFormData.swift in Sources */,
+				1853FD6D23425D1900F18EEC /* UIImage+Cachable.swift in Sources */,
 				213C5EA2215A44730039DC20 /* MultipartFormData.swift in Sources */,
 				21493A651D427E3000B5CF8A /* Utils.swift in Sources */,
 				21493A631D427E3000B5CF8A /* API.swift in Sources */,
@@ -766,10 +794,14 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RESTAPIImageTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImageTests;
@@ -798,10 +830,14 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = RESTAPIImageTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks $(FRAMEWORK_SEARCH_PATHS)";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.gujci.RESTAPIImageTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
