@@ -14,7 +14,7 @@ jobs:
     - name: Carthage test
       run: |
         carthage update
-        xcodebuild clean test -project RESTAPI.xcodeproj -scheme ${scheme} -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+        xcodebuild clean test -project RESTAPI.xcodeproj -scheme "${scheme}" -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
       env: 
          scheme: ${{ matrix.scheme }}
          destination: ${{ matrix.destination }}
