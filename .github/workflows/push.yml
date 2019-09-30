@@ -1,0 +1,30 @@
+name: CI
+
+on: [push]
+
+jobs:
+  test:
+    name: SPM-Test
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Swift build
+      run: swift build
+    - name: Swift test
+      run: swift test
+  test:
+    name: Carthage Test
+    runs-on: macOS-latest
+    strategy:
+        matrix:
+          scheme: ['RESTAPI iOS', 'RESTAPI tvOS', 'RESTAPIImage iOS']
+          destination: ['platform=iOS Simulator,OS=13.0,name=iPhone Xʀ', 'platform=tvOS Simulator,OS=123.0,name=Apple TV 4K']
+    steps:
+    - uses: actions/checkout@v1
+    - name: Carthage update
+      run: carthage update
+    - name: XCode test RESTAPI
+      run: xcodebuild clean test -project RESTAPI.xcodeproj -scheme ${scheme} -destination "${destination}" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
+      env: 
+         scheme: ${{ matrix.scheme }}
+         destination: ${{ matrix.destination }}
