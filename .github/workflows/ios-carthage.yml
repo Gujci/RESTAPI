@@ -20,3 +20,4 @@ jobs:
       env: 
          scheme: ${{ matrix.scheme }}
          destination: ${{ matrix.destination }}
+         DEVELOPER_DIR: /Applications/Xcode_11.app/Contents/Developer
