@@ -13,8 +13,6 @@ jobs:
     - uses: actions/checkout@v1
     - name: Swift test
       run: swift test
-    steps:
-    - uses: actions/checkout@v1
     - name: Carthage test
       run: |
         carthage update
