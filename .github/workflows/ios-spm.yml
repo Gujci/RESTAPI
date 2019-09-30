@@ -1,0 +1,11 @@
+name: ios-spm
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: SPM test
+      run: swift test
