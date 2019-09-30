@@ -11,8 +11,6 @@ jobs:
           destination: ['platform=iOS Simulator,OS=13.0,name=iPhone Xʀ']
     steps:
     - uses: actions/checkout@v1
-    - name: set Xcode
-      run: xcode-select -s /Applications/Xcode_11.app/Contents/Developer
     - name: Carthage test
       run: |
         carthage update
