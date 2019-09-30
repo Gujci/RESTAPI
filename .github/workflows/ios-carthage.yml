@@ -5,6 +5,7 @@ on: [push]
 jobs:
   test:
     runs-on: macOS-latest
+    xcode: 11.0
     strategy:
         matrix:
           scheme: ['RESTAPI iOS', 'RESTAPIImage iOS']
