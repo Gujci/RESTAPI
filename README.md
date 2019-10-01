@@ -3,7 +3,9 @@ Lightweight REST API communicator written in Swift, based on Foundation.
 An easy tool to communicate with your server's API in JSON format. Supports querys and valid JSON objects in the HTTP body.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Build Status](https://travis-ci.org/Gujci/RESTAPI.svg?branch=master)](https://travis-ci.org/Gujci/RESTAPI)
+![](https://github.com/Gujci/RESTAPI/workflows/ios-spm/badge.svg)
+![](https://github.com/Gujci/RESTAPI/workflows/ios-carthage/badge.svg)
+
 
 The framework supports `GET`, `POST`, `PUT` and `DELETE` requests for now.
 
