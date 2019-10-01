@@ -384,6 +384,6 @@ To log server sent errrors turn on  `APIErrorLoggingEnabled`.
 - [x] SPM support
 - [x] Expand status types to almost full
 - [x] Make JSON and [JSON] comform to JSONParseable to reduce redundant code (Solved by adding ValidResponseData & Conditional Conformance)
-- [x] Travis
+- [x] ~Travis~ GitHub Actions
 - [x] Document form-encoded-support related changes
-- [  ] Full support for some `Result` type 
+- [ ] Full support for some `Result` type 
