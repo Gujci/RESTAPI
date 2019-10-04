@@ -41,7 +41,9 @@ extension UIImage: Cachable {
         return UIImage(data: data) as? Self
     }
 }
+#endif
 
+#if os(tvOS) && os(iOS)
 // MARK: UIImageView extension
 public extension UIImageView {
     
