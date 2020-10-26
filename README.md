@@ -69,8 +69,8 @@ By default you can perform a single request which returns a simple JSON response
 
 ```swift
 let testServerApi = API(withBaseUrl: "http://jsonplaceholder.typicode.com")
-testServerApi.get("/posts") { (status, data) in
-    //This data will be SwiftyJSON's Optional JSON type by default (data: JSON?)
+testServerApi.get("/posts") { (status, data: JSON?) in
+    //This data will be SwiftyJSON's Optional JSON type
 }
 ```
 
@@ -196,7 +196,7 @@ To upload, just pass a `ValidRequestData` to the approptiate function's data par
 ```swift
 var uploadData = ExampleData(body: "body", id: 1, title: "title", userId: 2)
 
-testServerApi.post("/posts", data: uploadData) { (status, object) in
+testServerApi.post("/posts", data: uploadData) { (status, object: JSON?) in
     //...
 }
 ```
@@ -219,7 +219,7 @@ var parameters: [String: String] {
 }
 
 // ...
-oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.formValue){ (status, response) in
+oldServerApi.post("/post.php", query: ["dir": "gujci_test"], data: uploadData.formValue){ (status, response: JSON?) in
     // ... do something
 }
 ```
@@ -260,7 +260,7 @@ func setup(from imageUrl: String?)
 
 ````swift
 let uploadData = JPGUploadMultipartFormData(image: image, fileName: "image", uploadName: "upfile")
-api.post("/me/profile_picture", data: uploadData) { (status, resp) in 
+api.post("/me/profile_picture", data: uploadData) { (status, resp: JSON?) in 
     //...
 }
 ````
